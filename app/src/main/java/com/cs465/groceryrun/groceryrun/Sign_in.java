@@ -20,7 +20,6 @@ public class Sign_in extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in);
     }
 
-
     public void signup(View v){
         Intent intent = new Intent(this,Sign_up.class);
         startActivity(intent);

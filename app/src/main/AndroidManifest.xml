@@ -28,6 +28,7 @@
         <activity android:name=".Forum" />
         <activity android:name=".ConfirmTransaction" />
         <activity android:name=".FilterTransaction" />
+        <activity android:name=".ViewTransaction" />
         <activity android:name=".RateTransaction"></activity>
     </application>
 

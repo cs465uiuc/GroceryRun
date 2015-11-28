@@ -19,39 +19,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="First"
+        android:text="Hello"
         android:id="@+id/textView23"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/imageView"
-        android:layout_toEndOf="@+id/imageView" />
+        android:layout_toLeftOf="@+id/textView25"
+        android:layout_toStartOf="@+id/textView25" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Last"
+        android:text="World"
         android:id="@+id/textView24"
-        android:layout_alignTop="@+id/textView23"
-        android:layout_toRightOf="@+id/textView23"
-        android:layout_toEndOf="@+id/textView23"
-        android:layout_marginLeft="56dp"
-        android:layout_marginStart="56dp" />
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/textView26"
+        android:layout_toEndOf="@+id/textView26" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Location"
+        android:text="Phobos"
         android:id="@+id/textView25"
         android:layout_alignBottom="@+id/imageView"
-        android:layout_toRightOf="@+id/textView23"
-        android:layout_toEndOf="@+id/textView23" />
+        android:layout_toLeftOf="@+id/textView24"
+        android:layout_toStartOf="@+id/textView24" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Description"
+        android:text="this space intentionally left blank"
         android:id="@+id/textView26"
-        android:layout_marginTop="71dp"
+        android:layout_marginTop="68dp"
         android:layout_below="@+id/textView25"
         android:layout_centerHorizontal="true" />
 
@@ -79,6 +77,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ratingBar"
+        android:clickable="false"
+        android:focusableInTouchMode="false"
+        android:focusable="false"
+        android:isIndicator="true"
         android:layout_alignTop="@+id/textView27"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -87,7 +89,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ratingBar2"
+        android:clickable="false"
+        android:focusableInTouchMode="false"
+        android:focusable="false"
+        android:isIndicator="true"
         android:layout_alignTop="@+id/textView28"
         android:layout_alignLeft="@+id/ratingBar"
         android:layout_alignStart="@+id/ratingBar" />
+
 </RelativeLayout>

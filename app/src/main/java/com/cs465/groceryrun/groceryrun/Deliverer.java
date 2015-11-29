@@ -13,7 +13,7 @@ public class Deliverer extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_deliverer);
     }
 
     public void myPostings(View v){

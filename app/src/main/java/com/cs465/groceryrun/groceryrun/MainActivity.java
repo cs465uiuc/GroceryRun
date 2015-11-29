@@ -24,20 +24,23 @@ public class MainActivity extends AppCompatActivity {
         Typeface font = Typeface.createFromAsset( getAssets(), "fontawesome-webfont.ttf" );
         Button profileButton = (Button)findViewById( R.id.imageButton );
         profileButton.setTypeface(font);
-        Button forumButton = (Button)findViewById( R.id.imageButton2 );
-        forumButton.setTypeface(font);
+        Button requestButton = (Button)findViewById( R.id.imageButton2 );
+        requestButton.setTypeface(font);
         Button transactionButton = (Button)findViewById( R.id.imageButton3 );
         transactionButton.setTypeface(font);
         Button settingsButton = (Button)findViewById( R.id.imageButton4 );
         settingsButton.setTypeface(font);
         Button contactButton = (Button)findViewById( R.id.imageButton5 );
         contactButton.setTypeface(font);
+        Button deliverButton = (Button)findViewById( R.id.button18 );
+        deliverButton.setTypeface(font);
     }
 
     public void settings(View v){
         Intent intent = new Intent(this,Settings.class);
         startActivity(intent);
     }
+
     public void contact(View v){
         Intent intent = new Intent(this,ContactUs.class);
         startActivity(intent);
@@ -48,8 +51,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void forum(View v){
+    public void request(View v){
         Intent intent = new Intent(this,Forum.class);
+        startActivity(intent);
+    }
+
+    public void deliver(View v){
+        Intent intent = new Intent(this,Deliverer.class);
         startActivity(intent);
     }
 

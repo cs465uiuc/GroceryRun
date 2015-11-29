@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.cs465.groceryrun.groceryrun.Profile">
+    tools:context="com.cs465.groceryrun.groceryrun.Profile"
+    android:background="#FF67C7ED">
 
     <ImageView
         android:layout_width="100dp"

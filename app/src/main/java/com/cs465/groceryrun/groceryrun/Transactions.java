@@ -3,18 +3,15 @@ package com.cs465.groceryrun.groceryrun;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
-import android.app.ListActivity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ExpandableListAdapter;
 import android.widget.TextView;
 import android.widget.ExpandableListView;
-import android.widget.ArrayAdapter;
-import android.widget.AdapterView;
 
 import com.cs465.groceryrun.customexpandablelistview.ExpandableListViewAdapter;
+import com.cs465.groceryrun.enums.Transaction;
 
 public class Transactions extends AppCompatActivity {
 

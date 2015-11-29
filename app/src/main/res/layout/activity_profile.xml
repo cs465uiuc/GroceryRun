@@ -20,37 +20,37 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Hello"
-        android:id="@+id/textView23"
+        android:id="@+id/firstNameTxt"
         android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/textView25"
-        android:layout_toStartOf="@+id/textView25" />
+        android:layout_toLeftOf="@+id/locationTxt"
+        android:layout_toStartOf="@+id/locationTxt" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="World"
-        android:id="@+id/textView24"
+        android:id="@+id/lastNameTxt"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/textView26"
-        android:layout_toEndOf="@+id/textView26" />
+        android:layout_toRightOf="@+id/descriptionTxt"
+        android:layout_toEndOf="@+id/descriptionTxt" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Phobos"
-        android:id="@+id/textView25"
+        android:id="@+id/locationTxt"
         android:layout_alignBottom="@+id/imageView"
-        android:layout_toLeftOf="@+id/textView24"
-        android:layout_toStartOf="@+id/textView24" />
+        android:layout_toLeftOf="@+id/lastNameTxt"
+        android:layout_toStartOf="@+id/lastNameTxt" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="this space intentionally left blank"
-        android:id="@+id/textView26"
-        android:layout_marginTop="68dp"
-        android:layout_below="@+id/textView25"
+        android:id="@+id/descriptionTxt"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -58,10 +58,10 @@
         android:layout_height="wrap_content"
         android:text="Delivery Rating"
         android:id="@+id/textView27"
-        android:layout_marginTop="89dp"
-        android:layout_below="@+id/textView26"
-        android:layout_alignRight="@+id/imageView"
-        android:layout_alignEnd="@+id/imageView" />
+        android:layout_marginTop="58dp"
+        android:layout_below="@+id/descriptionTxt"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -96,5 +96,15 @@
         android:layout_alignTop="@+id/textView28"
         android:layout_alignLeft="@+id/ratingBar"
         android:layout_alignStart="@+id/ratingBar" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Info"
+        android:id="@+id/button17"
+        android:onClick="editProfile"
+        android:layout_below="@+id/ratingBar2"
+        android:layout_alignLeft="@+id/textView28"
+        android:layout_alignStart="@+id/textView28" />
 
 </RelativeLayout>

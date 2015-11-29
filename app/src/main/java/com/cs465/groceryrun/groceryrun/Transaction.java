@@ -8,8 +8,11 @@ import java.util.GregorianCalendar;
 public class Transaction {
     String name;
     String person;
+    boolean isShopper;
     GregorianCalendar date;
+    GregorianCalendar dueDate;
     String status;
+
 
     public String getName() {
         return name;
@@ -27,13 +30,17 @@ public class Transaction {
         this.person = person;
     }
 
-    public GregorianCalendar getDate() {
-        return date;
-    }
+    public boolean getIsShopper() {return  isShopper;}
 
-    public void setDate(GregorianCalendar date) {
-        this.date = date;
-    }
+    public void setIsShopper (boolean isShopper) {this.isShopper = isShopper;}
+
+    public GregorianCalendar getDate() {return date;}
+
+    public void setDate(GregorianCalendar date) {this.date = date;}
+
+    public GregorianCalendar getDueDate() {return dueDate;}
+
+    public void setDueDate(GregorianCalendar dueDate) {this.dueDate = dueDate;}
 
     public String getStatus() {
         return status;

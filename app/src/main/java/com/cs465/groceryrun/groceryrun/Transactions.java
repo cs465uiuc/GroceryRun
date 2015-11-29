@@ -8,61 +8,82 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ExpandableListAdapter;
 import android.widget.TextView;
-import android.widget.ListView;
+import android.widget.ExpandableListView;
 import android.widget.ArrayAdapter;
 import android.widget.AdapterView;
 
+import com.cs465.groceryrun.customexpandablelistview.ExpandableListViewAdapter;
+
 public class Transactions extends AppCompatActivity {
+
+    private ExpandableListViewAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transactions);
 
-        Transaction transaction;
-        GregorianCalendar gc;
+        ArrayList<Transaction> transactions = generateDummyData();
 
+        ExpandableListView listView = (ExpandableListView) findViewById(R.id.transaction_listview);
+
+
+        if(!transactions.isEmpty()) {
+            adapter = new ExpandableListViewAdapter(this, transactions);
+            listView.setAdapter(adapter);
+            listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+                @Override
+                public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                    Intent intent = new Intent(Transactions.this, ViewTransaction.class);
+                    TextView nameTxt = (TextView) v.findViewById(R.id.transaction_title);
+                    String name = nameTxt.getText().toString();
+                    TextView personTxt = (TextView) v.findViewById(R.id.transaction_person);
+                    String person = personTxt.getText().toString();
+                    TextView dateTxt = (TextView) v.findViewById(R.id.transaction_duedate);
+                    String date = dateTxt.getText().toString();
+                    intent.putExtra("TRANSACTION_NAME", name);
+                    intent.putExtra("TRANSACTION_PERSON", person);
+                    intent.putExtra("TRANSACTION_DATE", date);
+                    startActivity(intent);
+                    return false;
+                }
+            });
+
+        }
+
+    }
+
+    private ArrayList<Transaction> generateDummyData () {
         ArrayList<Transaction> transactions = new ArrayList<>();
+
+        Transaction transaction;
 
         transaction = new Transaction();
         transaction.setName("dunno");
         transaction.setPerson("no one");
-        gc = new GregorianCalendar(2006, 2, 11);
-        transaction.setDate(gc);
+        transaction.setIsShopper(true);
+        transaction.setDate(new GregorianCalendar(2006, 2, 11));
+        transaction.setDueDate(new GregorianCalendar(2006, 3, 18));
         transaction.setStatus("Confirmed");
         transactions.add(transaction);
 
         transaction = new Transaction();
         transaction.setName("me");
         transaction.setPerson("someone else");
-        gc = new GregorianCalendar(2015, 10, 1);
-        transaction.setDate(gc);
+        transaction.setIsShopper(false);
+        transaction.setDate(new GregorianCalendar(2015, 10, 1));
+        transaction.setDueDate(new GregorianCalendar(2015, 11, 3));
         transaction.setStatus("Needs confirmation");
         transactions.add(transaction);
 
-        final ListView listView = (ListView) findViewById(R.id.listView);
-        TransactionAdapter adapter = new TransactionAdapter(this, transactions);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new ListView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> a, View v, int p, long l) {
-                Intent intent = new Intent(Transactions.this,ViewTransaction.class);
-                TextView nameTxt = (TextView) v.findViewById(R.id.list_entry_name);
-                String name = nameTxt.getText().toString();
-                TextView personTxt = (TextView) v.findViewById(R.id.list_entry_person);
-                String person = personTxt.getText().toString();
-                TextView dateTxt = (TextView) v.findViewById(R.id.list_entry_date);
-                String date = dateTxt.getText().toString();
-                intent.putExtra("TRANSACTION_NAME", name);
-                intent.putExtra("TRANSACTION_PERSON", person);
-                intent.putExtra("TRANSACTION_DATE", date);
-                startActivity(intent);
-            }
-        });
+        return transactions;
     }
 
     public void filterTrans(View v){
         Intent intent = new Intent(this,FilterTransaction.class);
         startActivity(intent);
     }
+
 }

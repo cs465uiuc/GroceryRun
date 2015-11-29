@@ -10,15 +10,15 @@
     android:background="#FF67C7ED"
     tools:context="com.cs465.groceryrun.groceryrun.Transactions">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Filter"
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:id="@+id/filterButton"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="filterTrans" />
+        android:layout_margin="5dp"
+        android:background="@mipmap/icon_filter"
+        android:onClick="filterTrans"/>
 
     <ExpandableListView
         android:id="@+id/transaction_listview"

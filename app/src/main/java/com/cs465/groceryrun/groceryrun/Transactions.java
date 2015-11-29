@@ -63,21 +63,30 @@ public class Transactions extends AppCompatActivity {
         Transaction transaction;
 
         transaction = new Transaction();
-        transaction.setName("dunno");
-        transaction.setPerson("no one");
+        transaction.setName("Others");
+        transaction.setPerson("Julie");
+        transaction.setIsShopper(false);
+        transaction.setDate(new GregorianCalendar(2015, 10, 1));
+        transaction.setDueDate(new GregorianCalendar(2015, 11, 3));
+        transaction.setStatus("Arriving");
+        transactions.add(transaction);
+
+        transaction = new Transaction();
+        transaction.setName("Audrie");
+        transaction.setPerson("Shelby");
+        transaction.setIsShopper(true);
+        transaction.setDate(new GregorianCalendar(2015, 10, 1));
+        transaction.setDueDate(new GregorianCalendar(2015, 10, 30));
+        transaction.setStatus("Due");
+        transactions.add(transaction);
+
+        transaction = new Transaction();
+        transaction.setName("Groceries");
+        transaction.setPerson("Audrie");
         transaction.setIsShopper(true);
         transaction.setDate(new GregorianCalendar(2006, 2, 11));
         transaction.setDueDate(new GregorianCalendar(2006, 3, 18));
         transaction.setStatus("Confirmed");
-        transactions.add(transaction);
-
-        transaction = new Transaction();
-        transaction.setName("me");
-        transaction.setPerson("someone else");
-        transaction.setIsShopper(false);
-        transaction.setDate(new GregorianCalendar(2015, 10, 1));
-        transaction.setDueDate(new GregorianCalendar(2015, 11, 3));
-        transaction.setStatus("Needs confirmation");
         transactions.add(transaction);
 
         return transactions;

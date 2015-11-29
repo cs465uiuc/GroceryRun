@@ -3,18 +3,15 @@ package com.cs465.groceryrun.groceryrun;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
-import android.app.ListActivity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ExpandableListAdapter;
 import android.widget.TextView;
 import android.widget.ExpandableListView;
-import android.widget.ArrayAdapter;
-import android.widget.AdapterView;
 
 import com.cs465.groceryrun.customexpandablelistview.ExpandableListViewAdapter;
+import com.cs465.groceryrun.enums.Transaction;
 
 public class Transactions extends AppCompatActivity {
 
@@ -37,17 +34,15 @@ public class Transactions extends AppCompatActivity {
                 @Override
                 public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                     Intent intent = new Intent(Transactions.this, ViewTransaction.class);
-                    /*
-                    TextView nameTxt = (TextView) v.findViewById(R.id.list_entry_name);
+                    TextView nameTxt = (TextView) v.findViewById(R.id.transaction_title);
                     String name = nameTxt.getText().toString();
-                    TextView personTxt = (TextView) v.findViewById(R.id.list_entry_person);
+                    TextView personTxt = (TextView) v.findViewById(R.id.transaction_person);
                     String person = personTxt.getText().toString();
-                    TextView dateTxt = (TextView) v.findViewById(R.id.list_entry_date);
+                    TextView dateTxt = (TextView) v.findViewById(R.id.transaction_duedate);
                     String date = dateTxt.getText().toString();
                     intent.putExtra("TRANSACTION_NAME", name);
                     intent.putExtra("TRANSACTION_PERSON", person);
                     intent.putExtra("TRANSACTION_DATE", date);
-                    */
                     startActivity(intent);
                     return false;
                 }

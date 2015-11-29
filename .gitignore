@@ -1,6 +1,9 @@
 *.iml
 .gradle
+<<<<<<< .merge_file_a06188
+=======
 .idea
+>>>>>>> .merge_file_a00216
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries

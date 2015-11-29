@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.cs465.groceryrun.groceryrun.MainActivity">
+    tools:context="com.cs465.groceryrun.groceryrun.MainActivity"
+    android:background="#FF67C7ED">
 
     <TextView
         android:layout_width="wrap_content"
@@ -36,11 +37,11 @@
         android:id="@+id/imageButton2"
         android:text="@string/icon_news"
         android:textSize="24dp"
-        android:layout_marginTop="19dp"
-        android:onClick="forum"
-        android:layout_below="@+id/imageButton"
-        android:layout_toLeftOf="@+id/textView20"
-        android:layout_toStartOf="@+id/textView20" />
+        android:onClick="request"
+        android:layout_marginTop="26dp"
+        android:layout_below="@+id/button18"
+        android:layout_toLeftOf="@+id/textView19"
+        android:layout_toStartOf="@+id/textView19" />
 
     <Button
         android:layout_width="wrap_content"
@@ -48,11 +49,11 @@
         android:id="@+id/imageButton3"
         android:text="@string/icon_usd"
         android:textSize="24dp"
-        android:layout_marginTop="19dp"
         android:onClick="transactions"
+        android:layout_marginTop="24dp"
         android:layout_below="@+id/imageButton2"
-        android:layout_toLeftOf="@+id/textView20"
-        android:layout_toStartOf="@+id/textView20" />
+        android:layout_alignLeft="@+id/imageButton4"
+        android:layout_alignStart="@+id/imageButton4" />
 
     <Button
         android:layout_width="wrap_content"
@@ -72,7 +73,7 @@
         android:id="@+id/imageButton5"
         android:text="@string/icon_phone"
         android:textSize="24dp"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="21dp"
         android:onClick="contact"
         android:layout_below="@+id/imageButton4"
         android:layout_alignLeft="@+id/imageButton4"
@@ -92,7 +93,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Forum"
+        android:text="Request"
         android:id="@+id/textView19"
         android:layout_alignBaseline="@+id/imageButton2"
         android:layout_alignBottom="@+id/imageButton2"
@@ -128,5 +129,27 @@
         android:layout_alignBottom="@+id/imageButton5"
         android:layout_toRightOf="@+id/imageButton5"
         android:layout_toEndOf="@+id/imageButton5" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button18"
+        android:text="@string/icon_car"
+        android:textSize="24dp"
+        android:onClick="deliver"
+        android:layout_marginTop="21dp"
+        android:layout_below="@+id/imageButton"
+        android:layout_toLeftOf="@+id/textView23"
+        android:layout_toStartOf="@+id/textView23" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Deliver"
+        android:id="@+id/textView23"
+        android:layout_alignBaseline="@+id/button18"
+        android:layout_alignBottom="@+id/button18"
+        android:layout_alignLeft="@+id/textView19"
+        android:layout_alignStart="@+id/textView19" />
 
 </RelativeLayout>

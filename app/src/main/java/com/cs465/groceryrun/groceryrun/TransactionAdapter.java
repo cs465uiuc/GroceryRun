@@ -2,18 +2,16 @@ package com.cs465.groceryrun.groceryrun;
 
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
-import java.util.Date;
 import java.util.Calendar;
 
-import android.app.ListActivity;
 import android.content.Context;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import android.widget.TwoLineListItem;
+
+import com.cs465.groceryrun.enums.Transaction;
 
 /**
  * Created by Oleksiy Kamenyev on 11/27/2015.

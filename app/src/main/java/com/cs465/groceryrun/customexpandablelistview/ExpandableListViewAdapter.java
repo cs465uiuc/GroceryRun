@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cs465.groceryrun.groceryrun.R;
-import com.cs465.groceryrun.groceryrun.Transaction;
+import com.cs465.groceryrun.enums.Transaction;
 
 import java.util.GregorianCalendar;
 import java.util.Calendar;

@@ -1,4 +1,4 @@
-package com.cs465.groceryrun.groceryrun;
+package com.cs465.groceryrun.enums;
 
 import java.util.GregorianCalendar;
 

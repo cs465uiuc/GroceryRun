@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.cs465.groceryrun.groceryrun.R;
 import com.cs465.groceryrun.enums.Transaction;
+import com.cs465.groceryrun.groceryrun.Transactions;
 
 import java.util.GregorianCalendar;
 import java.util.Calendar;
@@ -38,21 +39,13 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
     private void extractData(List<Transaction> transactions) {
 
         for(Transaction transaction : transactions) {
-            String groupText = convertCalendarToString(transaction.getDate());
+            String groupText = Transactions.convertCalendarToString(transaction.getDate());
             if(!itemList.containsKey(groupText)) {
                 headerList.add(groupText);
                 itemList.put(groupText, new ArrayList<Transaction>());
             }
             itemList.get(groupText).add(transaction);
         }
-    }
-
-    private String convertCalendarToString(GregorianCalendar gc) {
-        int year = gc.get(Calendar.YEAR);
-        int month = gc.get(Calendar.MONTH);
-        int day = gc.get(Calendar.DAY_OF_MONTH);
-
-        return Integer.toString(month) + '/' + Integer.toString(day) + '/' + Integer.toString(year);
     }
 
     @Override
@@ -73,7 +66,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         final String childTitle = child.getName();
         final String childPerson = child.getPerson();
         final String childStatus = child.getStatus();
-        final String childDate = convertCalendarToString(child.getDueDate());
+        final String childDate = Transactions.convertCalendarToString(child.getDueDate());
 
         if (view == null) {
             LayoutInflater infalInflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

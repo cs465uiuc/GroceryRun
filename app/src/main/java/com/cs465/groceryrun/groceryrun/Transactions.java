@@ -1,6 +1,7 @@
 package com.cs465.groceryrun.groceryrun;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import android.content.Intent;
@@ -17,15 +18,29 @@ public class Transactions extends AppCompatActivity {
 
     private ExpandableListViewAdapter adapter;
 
+    private String filterType, filterStatus, filterTime;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transactions);
 
+        filterType = "All";
+        filterStatus = "All";
+        filterTime = "All";
+
+        Intent intent = getIntent();
+        if(intent.getStringExtra("FILTER_TYPE") != null)
+            filterType = intent.getStringExtra("FILTER_TYPE");
+        if(intent.getStringExtra("FILTER_STATUS") != null)
+            filterStatus = intent.getStringExtra("FILTER_STATUS");
+        if(intent.getStringExtra("FILTER_TIME") != null)
+            filterTime = intent.getStringExtra("FILTER_TIME");
+
         ArrayList<Transaction> transactions = generateDummyData();
+        transactions = filterTransactions(transactions);
 
         ExpandableListView listView = (ExpandableListView) findViewById(R.id.transaction_listview);
-
 
         if(!transactions.isEmpty()) {
             adapter = new ExpandableListViewAdapter(this, transactions);
@@ -47,9 +62,66 @@ public class Transactions extends AppCompatActivity {
                     return false;
                 }
             });
-
         }
+    }
 
+    private ArrayList<Transaction> filterTransactions (ArrayList<Transaction> allTransactions) {
+        ArrayList<Transaction>  filteredTransactions = filterTransactionType(allTransactions);
+        filteredTransactions = filterTransactionStatus(filteredTransactions);
+        filteredTransactions = filterTransactionTime(filteredTransactions);
+        return filteredTransactions;
+    }
+
+    private ArrayList<Transaction> filterTransactionType (ArrayList<Transaction> Transactions) {
+        ArrayList<Transaction>  filteredTransactions = new ArrayList<>();
+        for(Transaction transaction : Transactions) {
+            if(filterType.equals("Requests") && !transaction.getIsShopper()) { //not a shopper or is a buyer
+                filteredTransactions.add(transaction);
+            } else if(filterType.equals("Jobs") && transaction.getIsShopper()) { //is a buyer
+                filteredTransactions.add(transaction);
+            } else if(filterType.equals("All")) {
+                filteredTransactions.add(transaction);
+            }
+        }
+        return filteredTransactions;
+    }
+
+    private ArrayList<Transaction> filterTransactionStatus (ArrayList<Transaction> Transactions) {
+        ArrayList<Transaction>  filteredTransactions = new ArrayList<>();
+        for(Transaction transaction : Transactions) {
+            if(filterStatus.equals("Completed") && (transaction.getStatus() == "Delivered" || transaction.getStatus() == "Confirmed")) {
+                filteredTransactions.add(transaction);
+            } else if(filterStatus.equals("In Progress") && !(transaction.getStatus() == "Delivered" || transaction.getStatus() == "Confirmed")) {
+                filteredTransactions.add(transaction);
+            } else if(filterStatus.equals("All")) {
+                filteredTransactions.add(transaction);
+            }
+        }
+        return filteredTransactions;
+    }
+
+    private ArrayList<Transaction> filterTransactionTime (ArrayList<Transaction> Transactions) {
+        ArrayList<Transaction>  filteredTransactions = new ArrayList<>();
+        Calendar curDate = Calendar.getInstance();
+        for(Transaction transaction : Transactions) {
+            if(filterTime.equals("This Month") && transaction.getDate().get(Calendar.MONTH) == curDate.get(Calendar.MONTH)) {
+                filteredTransactions.add(transaction);
+            } else if(filterTime.equals("Last 6 Months")) {
+                if(curDate.get(Calendar.MONTH) <= 6) {
+                    if((transaction.getDate().get(Calendar.YEAR) == curDate.get(Calendar.YEAR) && transaction.getDate().get(Calendar.MONTH) <= curDate.get(Calendar.MONTH))
+                    || (transaction.getDate().get(Calendar.YEAR) == (curDate.get(Calendar.YEAR) - 1) && transaction.getDate().get(Calendar.MONTH) >= (12 - (6 - curDate.get(Calendar.MONTH)))))
+                        filteredTransactions.add(transaction);
+                } else {
+                    if(transaction.getDate().get(Calendar.MONTH) >= (curDate.get(Calendar.MONTH) - 6) && transaction.getDate().get(Calendar.MONTH) <= curDate.get(Calendar.MONTH))
+                        filteredTransactions.add(transaction);
+                }
+            } else if (filterTime.equals("This Year") && transaction.getDate().get(Calendar.YEAR) == curDate.get(Calendar.YEAR)) {
+                filteredTransactions.add(transaction);
+            } else if(filterTime.equals("All")) {
+                filteredTransactions.add(transaction);
+            }
+        }
+        return filteredTransactions;
     }
 
     private ArrayList<Transaction> generateDummyData () {
@@ -89,7 +161,20 @@ public class Transactions extends AppCompatActivity {
 
     public void filterTrans(View v){
         Intent intent = new Intent(this,FilterTransaction.class);
+
+        intent.putExtra("FILTER_TYPE", filterType);
+        intent.putExtra("FILTER_STATUS", filterStatus);
+        intent.putExtra("FILTER_TIME", filterTime);
+
         startActivity(intent);
+    }
+
+    public static String convertCalendarToString(GregorianCalendar gc) {
+        int year = gc.get(Calendar.YEAR);
+        int month = gc.get(Calendar.MONTH);
+        int day = gc.get(Calendar.DAY_OF_MONTH);
+
+        return Integer.toString(month) + '/' + Integer.toString(day) + '/' + Integer.toString(year);
     }
 
 }

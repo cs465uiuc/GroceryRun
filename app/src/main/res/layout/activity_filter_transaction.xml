@@ -107,22 +107,22 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Last 30 Days"
-            android:id="@+id/filterType_month"
+            android:text="This Month"
+            android:id="@+id/filterTime_onemonth"
             android:checked="false" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Last 6 Months"
-            android:id="@+id/filterType_hyear"
+            android:id="@+id/filterTime_halfyear"
             android:checked="false" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Last Year"
-            android:id="@+id/radioButton16"
+            android:text="This Year"
+            android:id="@+id/filterTime_oneyear"
             android:checked="false" />
     </RadioGroup>
 
@@ -134,6 +134,6 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:text="Apply"
-        android:onClick="back" />
+        android:onClick="apply" />
 
 </RelativeLayout>

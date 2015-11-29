@@ -12,7 +12,7 @@ public class Transaction {
     GregorianCalendar date;
     GregorianCalendar dueDate;
     String status;
-
+    float rating;
 
     public String getName() {
         return name;
@@ -42,11 +42,11 @@ public class Transaction {
 
     public void setDueDate(GregorianCalendar dueDate) {this.dueDate = dueDate;}
 
-    public String getStatus() {
-        return status;
-    }
+    public String getStatus() {return status;}
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
+    public void setStatus(String status) {this.status = status;}
+
+    public float getRating () {return rating;}
+
+    public void setRating (float rating) {this.rating = rating;}
 }

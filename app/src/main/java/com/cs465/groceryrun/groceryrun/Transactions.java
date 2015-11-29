@@ -45,6 +45,9 @@ public class Transactions extends AppCompatActivity {
         if(!transactions.isEmpty()) {
             adapter = new ExpandableListViewAdapter(this, transactions);
             listView.setAdapter(adapter);
+            for(int i=0; i<adapter.getGroupCount(); i++)
+                listView.expandGroup(i);
+
             listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
                 @Override
                 public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
@@ -136,6 +139,7 @@ public class Transactions extends AppCompatActivity {
         transaction.setDate(new GregorianCalendar(2015, 10, 1));
         transaction.setDueDate(new GregorianCalendar(2015, 11, 3));
         transaction.setStatus("Arriving");
+        transaction.setRating(0f);
         transactions.add(transaction);
 
         transaction = new Transaction();
@@ -145,6 +149,17 @@ public class Transactions extends AppCompatActivity {
         transaction.setDate(new GregorianCalendar(2015, 10, 1));
         transaction.setDueDate(new GregorianCalendar(2015, 10, 30));
         transaction.setStatus("Due");
+        transaction.setRating(0f);
+        transactions.add(transaction);
+
+        transaction = new Transaction();
+        transaction.setName("Audrie");
+        transaction.setPerson("Shelby");
+        transaction.setIsShopper(false);
+        transaction.setDate(new GregorianCalendar(2014, 11, 3));
+        transaction.setDueDate(new GregorianCalendar(2014, 11, 23));
+        transaction.setStatus("Delivered");
+        transaction.setRating(0f);
         transactions.add(transaction);
 
         transaction = new Transaction();
@@ -154,6 +169,7 @@ public class Transactions extends AppCompatActivity {
         transaction.setDate(new GregorianCalendar(2006, 2, 11));
         transaction.setDueDate(new GregorianCalendar(2006, 3, 18));
         transaction.setStatus("Confirmed");
+        transaction.setRating(4.5f);
         transactions.add(transaction);
 
         return transactions;
@@ -169,6 +185,11 @@ public class Transactions extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void confirmTransaction(View v){
+        Intent intent = new Intent(this, ConfirmTransaction.class);
+        startActivity(intent);
+    }
+
     public static String convertCalendarToString(GregorianCalendar gc) {
         int year = gc.get(Calendar.YEAR);
         int month = gc.get(Calendar.MONTH);
@@ -176,5 +197,4 @@ public class Transactions extends AppCompatActivity {
 
         return Integer.toString(month) + '/' + Integer.toString(day) + '/' + Integer.toString(year);
     }
-
 }

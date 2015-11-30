@@ -57,6 +57,11 @@ public class Transactions extends AppCompatActivity {
             listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
                 @Override
                 public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                    Transaction clickedTransaction = (Transaction) adapter.getChild(groupPosition, childPosition);
+                    Intent intent = new Intent(Transactions.this, ViewTransaction.class);
+                    intent.putExtra("TRANSACTION_ID", clickedTransaction.getId());
+                    startActivity(intent);
+                    /*
                     Intent intent = new Intent(Transactions.this, ViewTransaction.class);
                     TextView nameTxt = (TextView) v.findViewById(R.id.transaction_title);
                     String name = nameTxt.getText().toString();
@@ -68,6 +73,7 @@ public class Transactions extends AppCompatActivity {
                     intent.putExtra("TRANSACTION_PERSON", person);
                     intent.putExtra("TRANSACTION_DATE", date);
                     startActivity(intent);
+                    */
                     return false;
                 }
             });
@@ -142,8 +148,8 @@ public class Transactions extends AppCompatActivity {
         DBManager db = new DBManager(this);
 
         db.addTransaction(  "Grocery",
-                            "Tyler",
-                            "Buyer",
+                            "Julie",
+                            "Shopper",
                             CalendarConverter.convertCalendarIntToString(2015, 12, 1),
                             100.00,
                             null);

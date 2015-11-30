@@ -14,17 +14,25 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Your items are delivered! Please Confirm."
-        android:id="@+id/textView32"
+        android:id="@+id/confirmText"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/transactionRating"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="77dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Confirm"
-        android:id="@+id/button7"
-        android:onClick="rating"
-        android:layout_below="@+id/textView32"
+        android:id="@+id/applyConfirmOrRating"
+        android:onClick="ConfirmOrRate"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="54dp" />
 
@@ -32,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Report a problem"
-        android:id="@+id/button8"
-        android:layout_below="@+id/button7"
+        android:id="@+id/ReportBtn"
+        android:layout_below="@+id/applyConfirmOrRating"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

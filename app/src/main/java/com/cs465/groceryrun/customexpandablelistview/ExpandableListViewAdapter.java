@@ -13,10 +13,12 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cs465.groceryrun.groceryrun.ConfirmTransaction;
 import com.cs465.groceryrun.groceryrun.R;
 import com.cs465.groceryrun.enums.Transaction;
+import com.cs465.groceryrun.sqlite.DBManager;
 
 import java.util.GregorianCalendar;
 import java.util.Calendar;
@@ -78,7 +80,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         }
 
         ImageView childImage = (ImageView) view.findViewById(R.id.transaction_icon);
-        if(child.getRole() == "Shopper")
+        if(child.getRole().equals("Shopper"))
             childImage.setImageResource(R.mipmap.icon_shopper);
         else
             childImage.setImageResource(R.mipmap.icon_buyer);
@@ -92,7 +94,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         TextView childText3 = (TextView) view.findViewById(R.id.transaction_status);
         childText3.setText(childStatus);
 
-        if(childStatus == "Delivered") {
+        if(childStatus.equals("Delivered")) {
             TextView childText4 = (TextView) view.findViewById(R.id.transaction_duedate);
             childText4.setVisibility(View.GONE);
             Button childBtn = (Button) view.findViewById(R.id.transaction_confirmBtn);
@@ -100,12 +102,13 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
             childBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //child.setStatus("Confirmed");
-                    //Intent intent = new Intent(context, ConfirmTransaction.class);
-                    //context.startActivity(intent);
+                    Intent intent = new Intent(context, ConfirmTransaction.class);
+                    intent.putExtra("TRANSACTION_ID", child.getId());
+                    intent.putExtra("FROM", "overview");
+                    context.startActivity(intent);
                 }
             });
-        } else if (childStatus == "Confirmed")  {
+        } else if (childStatus.equals("Confirmed"))  {
             Button childBtn = (Button) view.findViewById(R.id.transaction_confirmBtn);
             childBtn.setVisibility(View.GONE);
             TextView childText4 = (TextView) view.findViewById(R.id.transaction_duedate);

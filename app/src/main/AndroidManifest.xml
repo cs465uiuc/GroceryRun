@@ -33,7 +33,6 @@
         <activity android:name=".ViewTransaction" />
         <activity android:name=".Deliverer" />
         <activity android:name=".ProfileEdit" />
-        <activity android:name=".RateTransaction" />
         <activity android:name=".MyPostings" >
         </activity>
         <activity android:name=".SearchRequests" >

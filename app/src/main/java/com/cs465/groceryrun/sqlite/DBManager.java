@@ -89,7 +89,8 @@ public class DBManager {
         else
             values.put(TransactionTable.COLUMN_NAME_DATE, CalendarConverter.convertCalendarToString(Calendar.getInstance(), true));
         values.put(TransactionTable.COLUMN_NAME_DUE_DATE, dueDate);
-        values.put(TransactionTable.COLUMN_NAME_STATUS, "Due");
+        //values.put(TransactionTable.COLUMN_NAME_STATUS, "Due");
+        values.put(TransactionTable.COLUMN_NAME_STATUS, "Delivered");
         values.put(TransactionTable.COLUMN_NAME_RATING, 0.0);
         values.put(TransactionTable.COLUMN_NAME_AMOUNT, amount);
 

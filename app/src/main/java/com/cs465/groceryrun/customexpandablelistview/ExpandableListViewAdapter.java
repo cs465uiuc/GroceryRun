@@ -67,6 +67,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         final Transaction child = (Transaction) getChild(groupPosition, childPosition);
         final String childTitle = child.getName();
         final String childPerson = child.getPerson();
+        final String childAmount = String.format("%.2f", child.getAmount());
         final String childStatus = child.getStatus();
         final String childDueDate = child.getDueDate();
         final String childRating = Double.toString(child.getRating());
@@ -86,7 +87,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         childText1.setText(childTitle);
 
         TextView childText2 = (TextView) view.findViewById(R.id.transaction_person);
-        childText2.setText(childPerson);
+        childText2.setText(childPerson + ", $" + childAmount);
 
         TextView childText3 = (TextView) view.findViewById(R.id.transaction_status);
         childText3.setText(childStatus);

@@ -145,7 +145,8 @@ public class Transactions extends AppCompatActivity {
                             "Tyler",
                             "Buyer",
                             CalendarConverter.convertCalendarIntToString(2015, 12, 1),
-                            100.0);
+                            100.00,
+                            null);
     }
 
     public void filterTrans(View v){

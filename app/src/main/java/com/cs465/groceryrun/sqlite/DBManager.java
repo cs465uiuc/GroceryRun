@@ -76,7 +76,7 @@ public class DBManager {
     }
 
 
-    public void addTransaction(String title, String person, String role, String dueDate, double amount) {
+    public void addTransaction(String title, String person, String role, String dueDate, double amount, String specificDate) {
         db = dbHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -84,7 +84,10 @@ public class DBManager {
         values.put(TransactionTable.COLUMN_NAME_TITLE, title);
         values.put(TransactionTable.COLUMN_NAME_PERSON, person);
         values.put(TransactionTable.COLUMN_NAME_ROLE, role);
-        values.put(TransactionTable.COLUMN_NAME_DATE, CalendarConverter.convertCalendarToString(Calendar.getInstance(), true));
+        if(specificDate != null)
+            values.put(TransactionTable.COLUMN_NAME_DATE, specificDate);
+        else
+            values.put(TransactionTable.COLUMN_NAME_DATE, CalendarConverter.convertCalendarToString(Calendar.getInstance(), true));
         values.put(TransactionTable.COLUMN_NAME_DUE_DATE, dueDate);
         values.put(TransactionTable.COLUMN_NAME_STATUS, "Due");
         values.put(TransactionTable.COLUMN_NAME_RATING, 0.0);

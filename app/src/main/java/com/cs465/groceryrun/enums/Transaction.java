@@ -22,9 +22,9 @@ public class Transaction {
 
     public void setId(int id) {this.id = id;}
 
-    public String getName() {return name;}
+    public String getTitle() {return name;}
 
-    public void setName(String name) {this.name = name;}
+    public void setTitle(String name) {this.name = name;}
 
     public String getPerson() {
         return person;

@@ -59,7 +59,7 @@ public class DBManager {
             Transaction t = new Transaction();
             t.setId(c.getInt(c.getColumnIndexOrThrow(TransactionTable._ID)));
 
-            t.setName(c.getString(c.getColumnIndexOrThrow(TransactionTable.COLUMN_NAME_TITLE)));
+            t.setTitle(c.getString(c.getColumnIndexOrThrow(TransactionTable.COLUMN_NAME_TITLE)));
             t.setPerson(c.getString(c.getColumnIndexOrThrow(TransactionTable.COLUMN_NAME_PERSON)));
             t.setRole(c.getString(c.getColumnIndexOrThrow(TransactionTable.COLUMN_NAME_ROLE)));
             t.setDate(c.getString(c.getColumnIndexOrThrow(TransactionTable.COLUMN_NAME_DATE)));
@@ -89,8 +89,8 @@ public class DBManager {
         else
             values.put(TransactionTable.COLUMN_NAME_DATE, CalendarConverter.convertCalendarToString(Calendar.getInstance(), true));
         values.put(TransactionTable.COLUMN_NAME_DUE_DATE, dueDate);
-        //values.put(TransactionTable.COLUMN_NAME_STATUS, "Due");
-        values.put(TransactionTable.COLUMN_NAME_STATUS, "Delivered");
+        values.put(TransactionTable.COLUMN_NAME_STATUS, "Due");
+        //values.put(TransactionTable.COLUMN_NAME_STATUS, "Delivered");
         values.put(TransactionTable.COLUMN_NAME_RATING, 0.0);
         values.put(TransactionTable.COLUMN_NAME_AMOUNT, amount);
 

@@ -67,7 +67,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
                              boolean isLastChild, View view, ViewGroup parent) {
 
         final Transaction child = (Transaction) getChild(groupPosition, childPosition);
-        final String childTitle = child.getName();
+        final String childTitle = child.getTitle();
         final String childPerson = child.getPerson();
         final String childAmount = String.format("%.2f", child.getAmount());
         final String childStatus = child.getStatus();

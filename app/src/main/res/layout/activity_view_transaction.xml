@@ -1,112 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.cs465.groceryrun.groceryrun.Profile">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Name"
-        android:id="@+id/textView25"
-        android:layout_marginTop="23dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Buyer"
-        android:id="@+id/textView33"
-        android:layout_marginTop="9dp"
-        android:layout_below="@+id/textView25"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Date"
-        android:id="@+id/textView34"
-        android:layout_marginTop="9dp"
-        android:layout_below="@+id/textView33"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Status"
-        android:id="@+id/textView35"
-        android:layout_marginTop="12dp"
-        android:layout_below="@+id/textView34"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textViewName"
-        android:layout_above="@+id/textView33"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="129dp"
-        android:layout_marginEnd="129dp"
-        android:text="" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textViewPerson"
-        android:text=""
-        android:layout_above="@+id/textView34"
-        android:layout_alignLeft="@+id/textViewName"
-        android:layout_alignStart="@+id/textViewName" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textViewDate"
-        android:text=""
-        android:layout_above="@+id/textView35"
-        android:layout_alignLeft="@+id/textViewPerson"
-        android:layout_alignStart="@+id/textViewPerson" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textViewStatus"
-        android:text=""
-        android:layout_alignTop="@+id/textView35"
-        android:layout_alignLeft="@+id/textViewDate"
-        android:layout_alignStart="@+id/textViewDate" />
+    android:id="@+id/transaction_detailview"
+    android:orientation="vertical"
+    android:weightSum="6"
+    tools:context="com.cs465.groceryrun.groceryrun.ViewTransaction">
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Confirm"
-        android:id="@+id/confirmButton"
-        android:layout_below="@+id/textView35"
+        android:layout_margin="5dp"
+        android:id="@+id/backToOverviewButton"
+        android:text="Back"
+        android:onClick="backToOverview"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:id="@+id/progressLayout"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="96dp"
-        android:onClick="confirmTrans" />
+        android:layout_alignParentStart="true">
 
-    <RatingBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ratingBar4"
-        android:clickable="false"
-        android:focusableInTouchMode="false"
-        android:focusable="false"
-        android:isIndicator="true"
-        android:layout_below="@+id/textView35"
-        android:layout_marginTop="34dp" />
+    </RelativeLayout>
 
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:id="@+id/transactionInfoLayout"
+        android:layout_below="@+id/progressLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/transactionTitle"
+            android:padding = "10dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Grocery"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:id="@+id/userInfoLayout"
+        android:layout_below="@+id/transactionInfoLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/transactionPerson"
+            android:padding = "10dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="By: Person"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/transactionAmount"
+            android:layout_below = "@+id/transactionPerson"
+            android:padding = "10dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Agreed fees: $0"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

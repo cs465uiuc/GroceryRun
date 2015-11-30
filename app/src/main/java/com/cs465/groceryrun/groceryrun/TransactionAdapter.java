@@ -56,7 +56,7 @@ public class TransactionAdapter extends BaseAdapter {
         TextView summary=(TextView)convertView.findViewById(R.id.list_entry_person);
         TextView date=(TextView)convertView.findViewById(R.id.list_entry_date);
 
-        name.setText(transactions.get(position).getName());
+        name.setText(transactions.get(position).getTitle());
         summary.setText(transactions.get(position).getPerson());
         date.setText(transactions.get(position).getDate());
 

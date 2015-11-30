@@ -3,6 +3,7 @@ package com.cs465.groceryrun.groceryrun;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Random;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -145,13 +146,43 @@ public class Transactions extends AppCompatActivity {
     }
 
     private void generateDummyData () {
-        DBManager db = new DBManager(this);
 
+        String[] nameList = {"Julie", "Audrie", "Molly", "Shelby", "Tyler", "Ben", "Shelby", "Mary"};
+
+        Random rand = new Random();
+
+        String person = nameList[rand.nextInt(nameList.length)];
+
+        String role;
+        if(rand.nextInt(3) == 1)
+            role = "Shopper";
+        else
+            role = "Buyer";
+
+        Calendar c = Calendar.getInstance();
+        int curYear = CalendarConverter.convertCalendarToInt(c, CalendarConverter.YEAR, true);
+        int curMonth = CalendarConverter.convertCalendarToInt(c, CalendarConverter.MONTH, true);
+        int curDay = CalendarConverter.convertCalendarToInt(c, CalendarConverter.DAY, true);
+        int randYear = rand.nextInt(5) + curYear;
+        int randMonth;
+        if(curYear == randYear)
+            randMonth = rand.nextInt(12-curMonth) + curMonth;
+        else
+            randMonth = rand.nextInt(12-1) + 1;
+        int randDay;
+        if(curYear == randYear && curMonth == randMonth)
+            randDay = rand.nextInt(30-curDay) + curDay;
+        else
+            randDay = rand.nextInt(30-1) + 1;
+
+        int randAmt = rand.nextInt(300);
+
+        DBManager db = new DBManager(this);
         db.addTransaction(  "Grocery",
-                            "Julie",
-                            "Shopper",
-                            CalendarConverter.convertCalendarIntToString(2015, 12, 1),
-                            100.00,
+                            person,
+                            role,
+                            CalendarConverter.convertCalendarIntToString(randYear, randMonth, randDay),
+                            randAmt,
                             null);
     }
 

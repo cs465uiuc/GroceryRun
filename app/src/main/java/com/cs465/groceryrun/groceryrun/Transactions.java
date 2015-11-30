@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
+import com.cs465.groceryrun.Utils.CalendarConverter;
 import com.cs465.groceryrun.customexpandablelistview.ExpandableListViewAdapter;
 import com.cs465.groceryrun.enums.Transaction;
 import com.cs465.groceryrun.sqlite.DBManager;
@@ -135,66 +136,16 @@ public class Transactions extends AppCompatActivity {
     }
     */
 
+
     private void generateDummyData () {
         DBManager db = new DBManager(this);
 
-        db.addTransaction(  "Molly",
+        db.addTransaction(  "Grocery",
                             "Tyler",
                             "Buyer",
-                            convertCalendarToString(new GregorianCalendar(2015, 10, 1)),
-                            convertCalendarToString(new GregorianCalendar(2015, 11, 3)),
+                            CalendarConverter.convertCalendarIntToString(2015, 12, 1),
                             100.0);
     }
-
-    private ArrayList<Transaction> generateTempDummyData () {
-        ArrayList<Transaction> transactions = new ArrayList<>();
-
-        Transaction transaction;
-
-        transaction = new Transaction();
-        transaction.setName("Others");
-        transaction.setPerson("Julie");
-        transaction.setRole("Buyer");
-        transaction.setDate(convertCalendarToString(new GregorianCalendar(2015, 10, 1)));
-        transaction.setDueDate(convertCalendarToString(new GregorianCalendar(2015, 11, 3)));
-        transaction.setStatus("Arriving");
-        transaction.setRating(0f);
-        transactions.add(transaction);
-
-        transaction = new Transaction();
-        transaction.setName("Audrie");
-        transaction.setPerson("Shelby");
-        transaction.setRole("Shopper");
-        transaction.setDate(convertCalendarToString(new GregorianCalendar(2015, 10, 1)));
-        transaction.setDueDate(convertCalendarToString(new GregorianCalendar(2015, 10, 30)));
-        transaction.setStatus("Due");
-        transaction.setRating(0f);
-        transactions.add(transaction);
-
-        transaction = new Transaction();
-        transaction.setName("Audrie");
-        transaction.setPerson("Shelby");
-        transaction.setRole("Buyer");
-        transaction.setDate(convertCalendarToString(new GregorianCalendar(2014, 11, 3)));
-        transaction.setDueDate(convertCalendarToString(new GregorianCalendar(2014, 11, 23)));
-        transaction.setStatus("Delivered");
-        transaction.setRating(0f);
-        transactions.add(transaction);
-
-        transaction = new Transaction();
-        transaction.setName("Groceries");
-        transaction.setPerson("Audrie");
-        transaction.setRole("Shopper");
-        transaction.setDate(convertCalendarToString(new GregorianCalendar(2006, 2, 11)));
-        transaction.setDueDate(convertCalendarToString(new GregorianCalendar(2006, 3, 18)));
-        transaction.setStatus("Confirmed");
-        transaction.setRating(4.5f);
-        transactions.add(transaction);
-
-        return transactions;
-    }
-
-
 
     public void filterTrans(View v){
         Intent intent = new Intent(this,FilterTransaction.class);
@@ -204,13 +155,5 @@ public class Transactions extends AppCompatActivity {
         intent.putExtra("FILTER_TIME", filterTime);
 
         startActivity(intent);
-    }
-
-    public static String convertCalendarToString(GregorianCalendar gc) {
-        int year = gc.get(Calendar.YEAR);
-        int month = gc.get(Calendar.MONTH);
-        int day = gc.get(Calendar.DAY_OF_MONTH);
-
-        return Integer.toString(month) + '/' + Integer.toString(day) + '/' + Integer.toString(year);
     }
 }

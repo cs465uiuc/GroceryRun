@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
+import com.cs465.groceryrun.Utils.CalendarConverter;
 import com.cs465.groceryrun.customexpandablelistview.ExpandableListViewAdapter;
 import com.cs465.groceryrun.enums.Transaction;
 import com.cs465.groceryrun.sqlite.DBManager;
@@ -135,13 +136,14 @@ public class Transactions extends AppCompatActivity {
     }
     */
 
+
     private void generateDummyData () {
         DBManager db = new DBManager(this);
 
         db.addTransaction(  "Grocery",
                             "Tyler",
                             "Buyer",
-                            convertCalendarStringToString(2015, 12, 1),
+                            CalendarConverter.convertCalendarIntToString(2015, 12, 1),
                             100.0);
     }
 
@@ -154,18 +156,4 @@ public class Transactions extends AppCompatActivity {
 
         startActivity(intent);
     }
-
-    public static String convertCalendarStringToString(int year, int month, int day) {
-        return Integer.toString(month) + '/' + Integer.toString(day) + '/' + Integer.toString(year);
-    }
-
-    public static String convertCalendarToString(Calendar c) {
-        int year = c.get(Calendar.YEAR);
-        int month = c.get(Calendar.MONTH);
-        int day = c.get(Calendar.DAY_OF_MONTH);
-
-        return Integer.toString(month) + '/' + Integer.toString(day) + '/' + Integer.toString(year);
-    }
-
-
 }

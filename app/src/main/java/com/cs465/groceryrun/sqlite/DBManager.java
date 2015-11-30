@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.cs465.groceryrun.Utils.CalendarConverter;
 import com.cs465.groceryrun.groceryrun.Transactions;
 import com.cs465.groceryrun.sqlite.GroceryRunContract.TransactionTable;
 import com.cs465.groceryrun.enums.Transaction;
@@ -83,7 +84,7 @@ public class DBManager {
         values.put(TransactionTable.COLUMN_NAME_TITLE, title);
         values.put(TransactionTable.COLUMN_NAME_PERSON, person);
         values.put(TransactionTable.COLUMN_NAME_ROLE, role);
-        values.put(TransactionTable.COLUMN_NAME_DATE, Transactions.convertCalendarToString(Calendar.getInstance()));
+        values.put(TransactionTable.COLUMN_NAME_DATE, CalendarConverter.convertCalendarToString(Calendar.getInstance()));
         values.put(TransactionTable.COLUMN_NAME_DUE_DATE, dueDate);
         values.put(TransactionTable.COLUMN_NAME_STATUS, "Due");
         values.put(TransactionTable.COLUMN_NAME_RATING, 0.0);

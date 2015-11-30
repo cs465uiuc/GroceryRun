@@ -39,6 +39,18 @@
         </activity>
         <activity android:name=".PostAvailability" >
         </activity>
+        <activity android:name=".SearchAvailabilities" >
+        </activity>
+        <activity android:name=".AvailabilityInfo" >
+        </activity>
+        <activity android:name=".Ratings" >
+        </activity>
+        <activity android:name=".CreateRequest" >
+        </activity>
+        <activity android:name=".Chat" >
+        </activity>
+        <activity android:name=".FilterAvailability" >
+        </activity>
     </application>
 
 </manifest>

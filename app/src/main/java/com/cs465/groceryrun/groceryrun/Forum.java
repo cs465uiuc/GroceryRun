@@ -15,5 +15,13 @@ public class Forum extends AppCompatActivity{
         setContentView(R.layout.activity_forum);
     }
 
+    public void searchAvailabilities(View v){
+        Intent intent = new Intent(this,SearchAvailabilities.class);
+        startActivity(intent);
+    }
 
+    public void postRequest(View v){
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+    }
 }

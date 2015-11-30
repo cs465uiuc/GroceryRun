@@ -84,7 +84,6 @@ public class Profile extends AppCompatActivity {
         intent.putExtra("USER_LASTNAME", lastName);
         intent.putExtra("USER_LOCATION", location);
         intent.putExtra("USER_DESCRIPTION", description);
-        System.out.println("heck3");
         startActivity(intent);
     }
 

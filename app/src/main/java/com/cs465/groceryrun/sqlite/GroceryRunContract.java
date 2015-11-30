@@ -8,7 +8,7 @@ import android.widget.Toast;
  */
 public class GroceryRunContract {
 
-    public static final  int    DATABASE_VERSION = 3;
+    public static final  int    DATABASE_VERSION = 1;
     public static final  String DATABASE_NAME = "groceryrun.db";
     private static final String TEXT_TYPE = " TEXT";
     private static final String INTEGER_TYPE = " INTEGER";
@@ -20,12 +20,12 @@ public class GroceryRunContract {
     /** Represents a transaction table */
     public static abstract class TransactionTable implements BaseColumns {
 
-        public static final String TABLE_NAME = "expense"; //?????
+        public static final String TABLE_NAME = "transactions";
         public static final String COLUMN_NAME_TITLE = "title";
         public static final String COLUMN_NAME_PERSON = "person";
         public static final String COLUMN_NAME_ROLE = "role";
         public static final String COLUMN_NAME_DATE = "date";
-        public static final String COLUMN_NAME_DUEDATE = "duedate";
+        public static final String COLUMN_NAME_DUE_DATE = "due_date";
         public static final String COLUMN_NAME_STATUS = "status";
         public static final String COLUMN_NAME_RATING = "rating";
         public static final String COLUMN_NAME_AMOUNT = "amount";
@@ -36,7 +36,7 @@ public class GroceryRunContract {
                 COLUMN_NAME_PERSON  + TEXT_TYPE + COMMA_SEP +
                 COLUMN_NAME_ROLE    + TEXT_TYPE + COMMA_SEP +
                 COLUMN_NAME_DATE    + TEXT_TYPE + COMMA_SEP +
-                COLUMN_NAME_DUEDATE + TEXT_TYPE + COMMA_SEP +
+                COLUMN_NAME_DUE_DATE + TEXT_TYPE + COMMA_SEP +
                 COLUMN_NAME_STATUS  + TEXT_TYPE + COMMA_SEP +
                 COLUMN_NAME_RATING  + REAL_TYPE + COMMA_SEP +
                 COLUMN_NAME_AMOUNT  + REAL_TYPE + ");";

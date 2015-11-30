@@ -5,10 +5,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.cs465.groceryrun.groceryrun.Transactions;
 import com.cs465.groceryrun.sqlite.GroceryRunContract.TransactionTable;
 import com.cs465.groceryrun.enums.Transaction;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * Created by tdw6193 on 11/29/2015.
@@ -35,7 +37,7 @@ public class DBManager {
                             TransactionTable.COLUMN_NAME_PERSON,
                             TransactionTable.COLUMN_NAME_ROLE,
                             TransactionTable.COLUMN_NAME_DATE,
-                            TransactionTable.COLUMN_NAME_DUEDATE,
+                            TransactionTable.COLUMN_NAME_DUE_DATE,
                             TransactionTable.COLUMN_NAME_STATUS,
                             TransactionTable.COLUMN_NAME_RATING,
                             TransactionTable.COLUMN_NAME_AMOUNT, };
@@ -60,7 +62,7 @@ public class DBManager {
             t.setPerson(c.getString(c.getColumnIndexOrThrow(TransactionTable.COLUMN_NAME_PERSON)));
             t.setRole(c.getString(c.getColumnIndexOrThrow(TransactionTable.COLUMN_NAME_ROLE)));
             t.setDate(c.getString(c.getColumnIndexOrThrow(TransactionTable.COLUMN_NAME_DATE)));
-            t.setDueDate(c.getString(c.getColumnIndexOrThrow(TransactionTable.COLUMN_NAME_DUEDATE)));
+            t.setDueDate(c.getString(c.getColumnIndexOrThrow(TransactionTable.COLUMN_NAME_DUE_DATE)));
             t.setStatus(c.getString(c.getColumnIndexOrThrow(TransactionTable.COLUMN_NAME_STATUS)));
             t.setRating(c.getDouble(c.getColumnIndexOrThrow(TransactionTable.COLUMN_NAME_RATING)));
             t.setAmount(c.getDouble(c.getColumnIndexOrThrow(TransactionTable.COLUMN_NAME_AMOUNT)));
@@ -73,7 +75,7 @@ public class DBManager {
     }
 
 
-    public void addTransaction(String title, String person, String role, String date, String dueDate, double amount) {
+    public void addTransaction(String title, String person, String role, String dueDate, double amount) {
         db = dbHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -81,8 +83,8 @@ public class DBManager {
         values.put(TransactionTable.COLUMN_NAME_TITLE, title);
         values.put(TransactionTable.COLUMN_NAME_PERSON, person);
         values.put(TransactionTable.COLUMN_NAME_ROLE, role);
-        values.put(TransactionTable.COLUMN_NAME_DATE, date);
-        values.put(TransactionTable.COLUMN_NAME_DUEDATE, dueDate);
+        values.put(TransactionTable.COLUMN_NAME_DATE, Transactions.convertCalendarToString(Calendar.getInstance()));
+        values.put(TransactionTable.COLUMN_NAME_DUE_DATE, dueDate);
         values.put(TransactionTable.COLUMN_NAME_STATUS, "Due");
         values.put(TransactionTable.COLUMN_NAME_RATING, 0.0);
         values.put(TransactionTable.COLUMN_NAME_AMOUNT, amount);

@@ -2,6 +2,7 @@ package com.cs465.groceryrun.customexpandablelistview;
 
 import android.content.Context;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 
 import android.view.LayoutInflater;
@@ -13,9 +14,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.cs465.groceryrun.groceryrun.ConfirmTransaction;
 import com.cs465.groceryrun.groceryrun.R;
 import com.cs465.groceryrun.enums.Transaction;
-import com.cs465.groceryrun.groceryrun.Transactions;
 
 import java.util.GregorianCalendar;
 import java.util.Calendar;
@@ -40,7 +41,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
     private void extractData(List<Transaction> transactions) {
 
         for(Transaction transaction : transactions) {
-            String groupText = Transactions.convertCalendarToString(transaction.getDate());
+            String groupText = transaction.getDate();
             if(!itemList.containsKey(groupText)) {
                 headerList.add(groupText);
                 itemList.put(groupText, new ArrayList<Transaction>());
@@ -63,12 +64,12 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, int childPosition,
                              boolean isLastChild, View view, ViewGroup parent) {
 
-        Transaction child = (Transaction) getChild(groupPosition, childPosition);
+        final Transaction child = (Transaction) getChild(groupPosition, childPosition);
         final String childTitle = child.getName();
         final String childPerson = child.getPerson();
         final String childStatus = child.getStatus();
-        final String childDueDate = Transactions.convertCalendarToString(child.getDueDate());
-        final String childRating = Float.toString(child.getRating());
+        final String childDueDate = child.getDueDate();
+        final String childRating = Double.toString(child.getRating());
 
         if (view == null) {
             LayoutInflater infalInflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -76,7 +77,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         }
 
         ImageView childImage = (ImageView) view.findViewById(R.id.transaction_icon);
-        if(child.getIsShopper())
+        if(child.getRole() == "Shopper")
             childImage.setImageResource(R.mipmap.icon_shopper);
         else
             childImage.setImageResource(R.mipmap.icon_buyer);
@@ -90,12 +91,20 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         TextView childText3 = (TextView) view.findViewById(R.id.transaction_status);
         childText3.setText(childStatus);
 
-        if(childStatus.equals("Delivered")) {
+        if(childStatus == "Delivered") {
             TextView childText4 = (TextView) view.findViewById(R.id.transaction_duedate);
             childText4.setVisibility(View.GONE);
             Button childBtn = (Button) view.findViewById(R.id.transaction_confirmBtn);
             childBtn.setVisibility(View.VISIBLE);
-        } else if (childStatus.equals("Confirmed"))  {
+            childBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //child.setStatus("Confirmed");
+                    //Intent intent = new Intent(context, ConfirmTransaction.class);
+                    //context.startActivity(intent);
+                }
+            });
+        } else if (childStatus == "Confirmed")  {
             Button childBtn = (Button) view.findViewById(R.id.transaction_confirmBtn);
             childBtn.setVisibility(View.GONE);
             TextView childText4 = (TextView) view.findViewById(R.id.transaction_duedate);
@@ -108,10 +117,6 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
             childText4.setVisibility(View.VISIBLE);
             childText4.setText(childDueDate);
         }
-
-
-
-
         return view;
     }
 

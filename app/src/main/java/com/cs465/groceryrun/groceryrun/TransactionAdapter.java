@@ -58,7 +58,7 @@ public class TransactionAdapter extends BaseAdapter {
 
         name.setText(transactions.get(position).getName());
         summary.setText(transactions.get(position).getPerson());
-        date.setText(convertCalendarToString(transactions.get(position).getDate()));
+        date.setText(transactions.get(position).getDate());
 
         return convertView;
     }

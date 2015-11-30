@@ -8,14 +8,18 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ExpandableListView;
+import android.widget.Toast;
 
 import com.cs465.groceryrun.customexpandablelistview.ExpandableListViewAdapter;
 import com.cs465.groceryrun.enums.Transaction;
+import com.cs465.groceryrun.sqlite.DBManager;
 
 public class Transactions extends AppCompatActivity {
 
+    private ExpandableListView listView;
     private ExpandableListViewAdapter adapter;
 
     private String filterType, filterStatus, filterTime;
@@ -37,10 +41,12 @@ public class Transactions extends AppCompatActivity {
         if(intent.getStringExtra("FILTER_TIME") != null)
             filterTime = intent.getStringExtra("FILTER_TIME");
 
-        ArrayList<Transaction> transactions = generateDummyData();
+        generateDummyData();
+        ArrayList<Transaction> transactions = new DBManager(this).getAllTransactions("");
+        //ArrayList<Transaction> transactions = generateTempDummyData();
         transactions = filterTransactions(transactions);
 
-        ExpandableListView listView = (ExpandableListView) findViewById(R.id.transaction_listview);
+        listView = (ExpandableListView) findViewById(R.id.transaction_listview);
 
         if(!transactions.isEmpty()) {
             adapter = new ExpandableListViewAdapter(this, transactions);
@@ -71,16 +77,16 @@ public class Transactions extends AppCompatActivity {
     private ArrayList<Transaction> filterTransactions (ArrayList<Transaction> allTransactions) {
         ArrayList<Transaction>  filteredTransactions = filterTransactionType(allTransactions);
         filteredTransactions = filterTransactionStatus(filteredTransactions);
-        filteredTransactions = filterTransactionTime(filteredTransactions);
+        //filteredTransactions = filterTransactionTime(filteredTransactions);
         return filteredTransactions;
     }
 
     private ArrayList<Transaction> filterTransactionType (ArrayList<Transaction> Transactions) {
         ArrayList<Transaction>  filteredTransactions = new ArrayList<>();
         for(Transaction transaction : Transactions) {
-            if(filterType.equals("Requests") && !transaction.getIsShopper()) { //not a shopper or is a buyer
+            if(filterType.equals("Requests") && transaction.getRole().equals("Buyer")) {
                 filteredTransactions.add(transaction);
-            } else if(filterType.equals("Jobs") && transaction.getIsShopper()) { //is a buyer
+            } else if(filterType.equals("Jobs") && transaction.getRole().equals("Shopper")) {
                 filteredTransactions.add(transaction);
             } else if(filterType.equals("All")) {
                 filteredTransactions.add(transaction);
@@ -103,6 +109,7 @@ public class Transactions extends AppCompatActivity {
         return filteredTransactions;
     }
 
+    /*
     private ArrayList<Transaction> filterTransactionTime (ArrayList<Transaction> Transactions) {
         ArrayList<Transaction>  filteredTransactions = new ArrayList<>();
         Calendar curDate = Calendar.getInstance();
@@ -126,8 +133,20 @@ public class Transactions extends AppCompatActivity {
         }
         return filteredTransactions;
     }
+    */
 
-    private ArrayList<Transaction> generateDummyData () {
+    private void generateDummyData () {
+        DBManager db = new DBManager(this);
+
+        db.addTransaction(  "Molly",
+                            "Tyler",
+                            "Buyer",
+                            convertCalendarToString(new GregorianCalendar(2015, 10, 1)),
+                            convertCalendarToString(new GregorianCalendar(2015, 11, 3)),
+                            100.0);
+    }
+
+    private ArrayList<Transaction> generateTempDummyData () {
         ArrayList<Transaction> transactions = new ArrayList<>();
 
         Transaction transaction;
@@ -135,9 +154,9 @@ public class Transactions extends AppCompatActivity {
         transaction = new Transaction();
         transaction.setName("Others");
         transaction.setPerson("Julie");
-        transaction.setIsShopper(false);
-        transaction.setDate(new GregorianCalendar(2015, 10, 1));
-        transaction.setDueDate(new GregorianCalendar(2015, 11, 3));
+        transaction.setRole("Buyer");
+        transaction.setDate(convertCalendarToString(new GregorianCalendar(2015, 10, 1)));
+        transaction.setDueDate(convertCalendarToString(new GregorianCalendar(2015, 11, 3)));
         transaction.setStatus("Arriving");
         transaction.setRating(0f);
         transactions.add(transaction);
@@ -145,9 +164,9 @@ public class Transactions extends AppCompatActivity {
         transaction = new Transaction();
         transaction.setName("Audrie");
         transaction.setPerson("Shelby");
-        transaction.setIsShopper(true);
-        transaction.setDate(new GregorianCalendar(2015, 10, 1));
-        transaction.setDueDate(new GregorianCalendar(2015, 10, 30));
+        transaction.setRole("Shopper");
+        transaction.setDate(convertCalendarToString(new GregorianCalendar(2015, 10, 1)));
+        transaction.setDueDate(convertCalendarToString(new GregorianCalendar(2015, 10, 30)));
         transaction.setStatus("Due");
         transaction.setRating(0f);
         transactions.add(transaction);
@@ -155,9 +174,9 @@ public class Transactions extends AppCompatActivity {
         transaction = new Transaction();
         transaction.setName("Audrie");
         transaction.setPerson("Shelby");
-        transaction.setIsShopper(false);
-        transaction.setDate(new GregorianCalendar(2014, 11, 3));
-        transaction.setDueDate(new GregorianCalendar(2014, 11, 23));
+        transaction.setRole("Buyer");
+        transaction.setDate(convertCalendarToString(new GregorianCalendar(2014, 11, 3)));
+        transaction.setDueDate(convertCalendarToString(new GregorianCalendar(2014, 11, 23)));
         transaction.setStatus("Delivered");
         transaction.setRating(0f);
         transactions.add(transaction);
@@ -165,15 +184,17 @@ public class Transactions extends AppCompatActivity {
         transaction = new Transaction();
         transaction.setName("Groceries");
         transaction.setPerson("Audrie");
-        transaction.setIsShopper(true);
-        transaction.setDate(new GregorianCalendar(2006, 2, 11));
-        transaction.setDueDate(new GregorianCalendar(2006, 3, 18));
+        transaction.setRole("Shopper");
+        transaction.setDate(convertCalendarToString(new GregorianCalendar(2006, 2, 11)));
+        transaction.setDueDate(convertCalendarToString(new GregorianCalendar(2006, 3, 18)));
         transaction.setStatus("Confirmed");
         transaction.setRating(4.5f);
         transactions.add(transaction);
 
         return transactions;
     }
+
+
 
     public void filterTrans(View v){
         Intent intent = new Intent(this,FilterTransaction.class);
@@ -182,11 +203,6 @@ public class Transactions extends AppCompatActivity {
         intent.putExtra("FILTER_STATUS", filterStatus);
         intent.putExtra("FILTER_TIME", filterTime);
 
-        startActivity(intent);
-    }
-
-    public void confirmTransaction(View v){
-        Intent intent = new Intent(this, ConfirmTransaction.class);
         startActivity(intent);
     }
 

@@ -44,7 +44,6 @@ public class Transactions extends AppCompatActivity {
 
         generateDummyData();
         ArrayList<Transaction> transactions = new DBManager(this).getAllTransactions("");
-        //ArrayList<Transaction> transactions = generateTempDummyData();
         transactions = filterTransactions(transactions);
 
         listView = (ExpandableListView) findViewById(R.id.transaction_listview);
@@ -78,7 +77,7 @@ public class Transactions extends AppCompatActivity {
     private ArrayList<Transaction> filterTransactions (ArrayList<Transaction> allTransactions) {
         ArrayList<Transaction>  filteredTransactions = filterTransactionType(allTransactions);
         filteredTransactions = filterTransactionStatus(filteredTransactions);
-        //filteredTransactions = filterTransactionTime(filteredTransactions);
+        filteredTransactions = filterTransactionTime(filteredTransactions);
         return filteredTransactions;
     }
 
@@ -110,23 +109,27 @@ public class Transactions extends AppCompatActivity {
         return filteredTransactions;
     }
 
-    /*
     private ArrayList<Transaction> filterTransactionTime (ArrayList<Transaction> Transactions) {
         ArrayList<Transaction>  filteredTransactions = new ArrayList<>();
         Calendar curDate = Calendar.getInstance();
         for(Transaction transaction : Transactions) {
-            if(filterTime.equals("This Month") && transaction.getDate().get(Calendar.MONTH) == curDate.get(Calendar.MONTH)) {
+            String transactionDate = transaction.getDate();
+            if(filterTime.equals("This Month")
+            && CalendarConverter.convertCalendarStrToInt(transactionDate, CalendarConverter.MONTH) == CalendarConverter.convertCalendarToInt(curDate, CalendarConverter.MONTH, true)) {
                 filteredTransactions.add(transaction);
             } else if(filterTime.equals("Last 6 Months")) {
-                if(curDate.get(Calendar.MONTH) <= 6) {
-                    if((transaction.getDate().get(Calendar.YEAR) == curDate.get(Calendar.YEAR) && transaction.getDate().get(Calendar.MONTH) <= curDate.get(Calendar.MONTH))
-                    || (transaction.getDate().get(Calendar.YEAR) == (curDate.get(Calendar.YEAR) - 1) && transaction.getDate().get(Calendar.MONTH) >= (12 - (6 - curDate.get(Calendar.MONTH)))))
+                if(CalendarConverter.convertCalendarToInt(curDate, CalendarConverter.MONTH, true) <= 6) {
+                    if((CalendarConverter.convertCalendarStrToInt(transactionDate, CalendarConverter.YEAR) == CalendarConverter.convertCalendarToInt(curDate, CalendarConverter.YEAR, true)
+                    && CalendarConverter.convertCalendarStrToInt(transactionDate, CalendarConverter.MONTH) <= CalendarConverter.convertCalendarToInt(curDate, CalendarConverter.MONTH, true))
+                    || (CalendarConverter.convertCalendarStrToInt(transactionDate, CalendarConverter.YEAR) == CalendarConverter.convertCalendarToInt(curDate, CalendarConverter.YEAR, true) - 1
+                    && CalendarConverter.convertCalendarStrToInt(transactionDate, CalendarConverter.MONTH) >= (12 - (6 - CalendarConverter.convertCalendarToInt(curDate, CalendarConverter.MONTH, true)))))
                         filteredTransactions.add(transaction);
                 } else {
-                    if(transaction.getDate().get(Calendar.MONTH) >= (curDate.get(Calendar.MONTH) - 6) && transaction.getDate().get(Calendar.MONTH) <= curDate.get(Calendar.MONTH))
+                    if(CalendarConverter.convertCalendarStrToInt(transactionDate, CalendarConverter.MONTH) >= CalendarConverter.convertCalendarToInt(curDate, CalendarConverter.MONTH, true) - 6
+                    && CalendarConverter.convertCalendarStrToInt(transactionDate, CalendarConverter.MONTH) <= CalendarConverter.convertCalendarToInt(curDate, CalendarConverter.MONTH, true))
                         filteredTransactions.add(transaction);
                 }
-            } else if (filterTime.equals("This Year") && transaction.getDate().get(Calendar.YEAR) == curDate.get(Calendar.YEAR)) {
+            } else if (filterTime.equals("This Year") && CalendarConverter.convertCalendarStrToInt(transactionDate, CalendarConverter.YEAR) == CalendarConverter.convertCalendarToInt(curDate, CalendarConverter.YEAR, true)) {
                 filteredTransactions.add(transaction);
             } else if(filterTime.equals("All")) {
                 filteredTransactions.add(transaction);
@@ -134,8 +137,6 @@ public class Transactions extends AppCompatActivity {
         }
         return filteredTransactions;
     }
-    */
-
 
     private void generateDummyData () {
         DBManager db = new DBManager(this);

@@ -9,12 +9,9 @@ public class Transaction {
     int id = -1;
     String name;
     String person;
-    //boolean isShopper;
     String role;
     String date;
     String dueDate;
-    //GregorianCalendar date;
-    //GregorianCalendar dueDate;
     String status;
     double rating;
     double amount;
@@ -41,23 +38,13 @@ public class Transaction {
 
     public void setRole(String role) {this.role = role;}
 
-    //public boolean getIsShopper() {return  isShopper;}
-
-    //public void setIsShopper (boolean isShopper) {this.isShopper = isShopper;}
-
     public String getDate() {return date;}
 
     public void setDate(String date) {this.date = date;}
 
-    //public void setDate(GregorianCalendar date) {this.date = date;}
-
-    //public GregorianCalendar getDueDate() {return dueDate;}
-
     public String getDueDate() {return dueDate;}
 
     public void setDueDate(String dueDate) {this.dueDate = dueDate;}
-
-    //public void setDueDate(GregorianCalendar dueDate) {this.dueDate = dueDate;}
 
     public String getStatus() {return status;}
 

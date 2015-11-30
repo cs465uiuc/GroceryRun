@@ -9,10 +9,27 @@ public class CalendarConverter {
 
     public static int DAY = 1, MONTH = 2, YEAR = 3;
 
-    public static String convertCalendarToString(Calendar c) {
+    public static int convertCalendarToInt (Calendar c, int extract, boolean androidCalendar) {
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH);
+        if(androidCalendar)
+            month += 1;
         int day = c.get(Calendar.DAY_OF_MONTH);
+
+        if(extract == DAY)
+            return day;
+        else if (extract == MONTH)
+            return month;
+        else if (extract == YEAR)
+            return year;
+
+        return 0;
+    }
+
+    public static String convertCalendarToString(Calendar c, boolean androidCalendar) {
+        int year = convertCalendarToInt(c, YEAR, androidCalendar);
+        int month = convertCalendarToInt(c, MONTH, androidCalendar);
+        int day = convertCalendarToInt(c, DAY, androidCalendar);;
 
         return convertCalendarIntToString(year, month, day);
     }

@@ -1,11 +1,16 @@
 package com.cs465.groceryrun.enums;
 
-import java.util.GregorianCalendar;
-
 /**
  * Created by Oleksiy Kamenyev on 11/27/2015.
  */
 public class Transaction {
+
+    public static final int PROGRESS_REQUEST_RECEIVED = 5;
+    public static final int PROGRESS_SHOPPING = 35;
+    public static final int PROGRESS_DELIVERING = 65;
+    public static final int PROGRESS_DELIVERED = 95;
+    public static final int PROGRESS_CONFIRMED = 100;
+
     int id = -1;
     String name;
     String person;

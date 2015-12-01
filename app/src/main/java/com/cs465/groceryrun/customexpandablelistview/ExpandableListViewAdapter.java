@@ -13,15 +13,11 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.cs465.groceryrun.groceryrun.ConfirmTransaction;
 import com.cs465.groceryrun.groceryrun.R;
 import com.cs465.groceryrun.enums.Transaction;
-import com.cs465.groceryrun.sqlite.DBManager;
 
-import java.util.GregorianCalendar;
-import java.util.Calendar;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -92,12 +88,15 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         childText2.setText(childPerson + ", $" + childAmount);
 
         TextView childText3 = (TextView) view.findViewById(R.id.transaction_status);
-        childText3.setText(childStatus);
+        if(!childStatus.equals("Delivered") && !childStatus.equals("Confirmed"))
+            childText3.setText("Due");
+        else
+            childText3.setText(childStatus);
 
         if(childStatus.equals("Delivered")) {
             TextView childText4 = (TextView) view.findViewById(R.id.transaction_duedate);
             childText4.setVisibility(View.GONE);
-            Button childBtn = (Button) view.findViewById(R.id.transaction_confirmBtn);
+            Button childBtn = (Button) view.findViewById(R.id.otransaction_confirmBtn);
             childBtn.setVisibility(View.VISIBLE);
             childBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -109,13 +108,13 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
                 }
             });
         } else if (childStatus.equals("Confirmed"))  {
-            Button childBtn = (Button) view.findViewById(R.id.transaction_confirmBtn);
+            Button childBtn = (Button) view.findViewById(R.id.otransaction_confirmBtn);
             childBtn.setVisibility(View.GONE);
             TextView childText4 = (TextView) view.findViewById(R.id.transaction_duedate);
             childText4.setVisibility(View.VISIBLE);
             childText4.setText("Rating: " + childRating);
         } else {
-            Button childBtn = (Button) view.findViewById(R.id.transaction_confirmBtn);
+            Button childBtn = (Button) view.findViewById(R.id.otransaction_confirmBtn);
             childBtn.setVisibility(View.GONE);
             TextView childText4 = (TextView) view.findViewById(R.id.transaction_duedate);
             childText4.setVisibility(View.VISIBLE);

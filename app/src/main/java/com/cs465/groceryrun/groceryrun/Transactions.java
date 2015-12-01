@@ -2,17 +2,13 @@ package com.cs465.groceryrun.groceryrun;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.Random;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.ExpandableListView;
-import android.widget.Toast;
 
 import com.cs465.groceryrun.Utils.CalendarConverter;
 import com.cs465.groceryrun.customexpandablelistview.ExpandableListViewAdapter;
@@ -171,7 +167,10 @@ public class Transactions extends AppCompatActivity {
             randMonth = rand.nextInt(12-1) + 1;
         int randDay;
         if(curYear == randYear && curMonth == randMonth)
-            randDay = rand.nextInt(30-curDay) + curDay;
+            if(curDay < 30)
+                randDay = rand.nextInt(30-curDay) + curDay;
+            else
+                randDay = rand.nextInt(30-1) + 1;
         else
             randDay = rand.nextInt(30-1) + 1;
 

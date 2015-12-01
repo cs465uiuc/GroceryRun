@@ -24,6 +24,102 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/requestDateText"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:padding = "10dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text = "Requested\n11/27/2015"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/dueDateText"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:padding = "10dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text = "Due\n12/28/2015"/>
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/transactionProgress"
+            android:layout_below="@+id/dueDateText"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_centerHorizontal="true" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/transactionProgress"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal"
+            android:id="@+id/progreeButtonGroup" >
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/progressRequestReceived"
+                android:text=""
+                android:checked="false" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="45dp"
+                android:id="@+id/progressShopping"
+                android:text=""
+                android:checked="false" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="75dp"
+                android:id="@+id/progressDelivering"
+                android:text=""
+                android:checked="false" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="100dp"
+                android:id="@+id/progressDelivered"
+                android:text=""
+                android:checked="false" />
+
+        </RadioGroup>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/transactionProgress"
+            android:layout_alignParentRight="true"
+            android:layout_margin="2dp"
+            android:id="@+id/dtransaction_confirmBtn"
+            android:text="Confirm"
+            android:onClick="confirmTrans"/>
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/transactionProgress"
+            android:id="@+id/transactionRate"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="2dp"
+            android:isIndicator="true"/>
+
     </RelativeLayout>
 
     <RelativeLayout

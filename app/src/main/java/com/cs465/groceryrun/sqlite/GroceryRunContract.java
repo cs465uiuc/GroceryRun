@@ -1,7 +1,6 @@
 package com.cs465.groceryrun.sqlite;
 
 import android.provider.BaseColumns;
-import android.widget.Toast;
 
 /**
  * Created by tdw6193 on 11/29/2015.

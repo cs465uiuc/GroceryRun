@@ -5,27 +5,22 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.cs465.groceryrun.enums.Transaction;
 import com.cs465.groceryrun.sqlite.DBManager;
 
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
 /**
- * Created by YourName on 11/27/2015.
+ * Created by tdw6193 on 11/27/2015.
  */
 public class ViewTransaction extends AppCompatActivity {
-    /*
-    String name = null;
-    String buyer = null;
-    String date = null;
-    String status = null;
-    double rating = -1.;
-    */
 
     private String title;
     private String person;
@@ -36,6 +31,7 @@ public class ViewTransaction extends AppCompatActivity {
     private double rating;
     private double amount;
 
+    private DBManager db;
     private int transactionID;
 
     @Override
@@ -46,7 +42,7 @@ public class ViewTransaction extends AppCompatActivity {
         Intent intent = getIntent();
         transactionID = intent.getIntExtra("TRANSACTION_ID", -1);
 
-        DBManager db = new DBManager(this);
+        db = new DBManager(this);
         ArrayList<Transaction> allTransactions = db.getAllTransactions("");
         Transaction transaction = allTransactions.get(transactionID-1);
 
@@ -61,9 +57,86 @@ public class ViewTransaction extends AppCompatActivity {
             amount = transaction.getAmount();
         }
 
+        TextView reqestDateText = (TextView) findViewById(R.id.requestDateText);
+        TextView dueDateText = (TextView) findViewById(R.id.dueDateText);
+        RadioGroup progressButtonGroup = (RadioGroup) findViewById(R.id.progreeButtonGroup);
+        RadioButton requestReceivedBtn = (RadioButton) findViewById(R.id.progressRequestReceived);
+        RadioButton shoppingBtn = (RadioButton) findViewById(R.id.progressShopping);
+        RadioButton deliveringBtn = (RadioButton) findViewById(R.id.progressDelivering);
+        RadioButton deliveredBtn = (RadioButton) findViewById(R.id.progressDelivered);
+        ProgressBar transactionProgress = (ProgressBar) findViewById(R.id.transactionProgress);
+        Button confirmBtn = (Button) findViewById(R.id.dtransaction_confirmBtn);
+        RatingBar rateBar = (RatingBar) findViewById(R.id.transactionRate);
+
         TextView transactionTitle = (TextView) findViewById(R.id.transactionTitle);
         TextView transactionPerson = (TextView) findViewById(R.id.transactionPerson);
         TextView transactionAmount = (TextView) findViewById(R.id.transactionAmount);
+
+        if(date != null)
+            reqestDateText.setText("Requested\n" + date);
+        if(due_date != null)
+            dueDateText.setText("Due\n" + due_date);
+
+        if(rating >= 0)
+            rateBar.setRating((float) rating);
+
+        confirmBtn.setVisibility(View.GONE);
+        rateBar.setVisibility(View.GONE);
+        if(status != null) {
+            if (status.equals("Request Received"))
+                transactionProgress.setProgress(Transaction.PROGRESS_REQUEST_RECEIVED);
+            else if (status.equals("Shopping"))
+                transactionProgress.setProgress(Transaction.PROGRESS_SHOPPING);
+            else if (status.equals("Delivering"))
+                transactionProgress.setProgress(Transaction.PROGRESS_DELIVERING);
+            else if (status.equals("Delivered")) {
+                transactionProgress.setProgress(Transaction.PROGRESS_DELIVERED);
+                progressButtonGroup.setVisibility(View.GONE);
+                confirmBtn.setVisibility(View.VISIBLE);
+            }
+            else if (status.equals("Confirmed")) {
+                transactionProgress.setProgress(Transaction.PROGRESS_CONFIRMED);
+                progressButtonGroup.setVisibility(View.GONE);
+                rateBar.setVisibility(View.VISIBLE);
+            }
+            else
+                transactionProgress.setProgress(0);
+        }
+
+
+        if(role.equals("Buyer")) {
+            progressButtonGroup.setVisibility(View.GONE);
+        } else if(!status.equals("Delivered") && !status.equals("Confirmed")) {
+            progressButtonGroup.setVisibility(View.VISIBLE);
+            requestReceivedBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    db.editTransaction(transactionID, "Request Received", -1);
+                    refreshActivity();
+                }
+            });
+            shoppingBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    db.editTransaction(transactionID, "Shopping", -1);
+                    refreshActivity();
+                }
+            });
+            deliveringBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    db.editTransaction(transactionID, "Delivering", -1);
+                    refreshActivity();
+                }
+            });
+            deliveredBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    db.editTransaction(transactionID, "Delivered", -1);
+                    refreshActivity();
+                }
+            });
+        }
 
         if(title != null)
             transactionTitle.setText(title);
@@ -76,77 +149,14 @@ public class ViewTransaction extends AppCompatActivity {
         }
 
         if(amount >= 0)
-            transactionAmount.setText("Agreed fees: " + String.format("%.2f", amount));
+            transactionAmount.setText("Agreed fees: $" + String.format("%.2f", amount));
 
-
-        /*
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            name = extras.getString("TRANSACTION_NAME");
-            buyer = extras.getString("TRANSACTION_PERSON");
-            date = extras.getString("TRANSACTION_DATE");
-            if(name != null && name.equals("dunno")) {
-                status = "Confirmed";
-                rating = 5.0;
-            }
-            else {
-                status = "Needs confirmation";
-            }
-        }
-
-        Button confirmButton = (Button) findViewById(R.id.confirmButton);
-        RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar4);
-
-        TextView nameText = (TextView) findViewById(R.id.textViewName);
-        TextView personText = (TextView) findViewById(R.id.textViewPerson);
-        TextView dateText = (TextView) findViewById(R.id.textViewDate);
-        TextView statusText = (TextView) findViewById(R.id.textViewStatus);
-
-        if(name != null) {
-            nameText.setText(name);
-        }
-        else {
-            nameText.setText("error");
-        }
-
-        if(buyer != null) {
-            personText.setText(buyer);
-        }
-        else {
-            personText.setText("error");
-        }
-
-        if(date != null) {
-            dateText.setText(date);
-        }
-        else {
-            dateText.setText("error");
-        }
-
-        if(status != null) {
-            statusText.setText(status);
-            if(status.equals("Confirmed")) {
-                confirmButton.setVisibility(View.GONE);
-                ratingBar.setRating((float) rating);
-            }
-            else {
-                ratingBar.setVisibility(View.GONE);
-                confirmButton.setOnClickListener(new Button.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        confirmTrans(v);
-                    }
-                });
-            }
-        }
-        else {
-            statusText.setText("error");
-        }
-        */
     }
 
-    public void backToOverview(View v){
-        Intent intent = new Intent(this, Transactions.class);
+    private void refreshActivity () {
+        Intent intent = getIntent();
+        intent.putExtra("TRANSACTION_ID", transactionID);
+        finish();
         startActivity(intent);
     }
 
@@ -154,6 +164,11 @@ public class ViewTransaction extends AppCompatActivity {
         Intent intent = new Intent(this, ConfirmTransaction.class);
         intent.putExtra("TRANSACTION_ID", transactionID);
         intent.putExtra("FROM", "detailview");
+        startActivity(intent);
+    }
+
+    public void backToOverview(View v){
+        Intent intent = new Intent(this, Transactions.class);
         startActivity(intent);
     }
 }

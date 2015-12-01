@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Grocery List:"
-        android:id="@+id/textView41"
+        android:id="@+id/groceryListLabel"
         android:layout_below="@+id/textView31"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -44,8 +44,8 @@
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
         android:ems="10"
-        android:id="@+id/editText10"
-        android:layout_below="@+id/textView41"
+        android:id="@+id/groceryList"
+        android:layout_below="@+id/groceryListLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -53,9 +53,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Approximate Price: $"
-        android:id="@+id/textView42"
+        android:id="@+id/approximatePriceLabel"
         android:layout_marginTop="66dp"
-        android:layout_below="@+id/editText10"
+        android:layout_below="@+id/groceryList"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -64,19 +64,19 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/editText11"
-        android:layout_alignBaseline="@+id/textView42"
-        android:layout_alignBottom="@+id/textView42"
-        android:layout_toRightOf="@+id/textView42"
-        android:layout_toEndOf="@+id/textView42" />
+        android:id="@+id/approximatePrice"
+        android:layout_alignBaseline="@+id/approximatePriceLabel"
+        android:layout_alignBottom="@+id/approximatePriceLabel"
+        android:layout_toRightOf="@+id/approximatePriceLabel"
+        android:layout_toEndOf="@+id/approximatePriceLabel" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="N/A"
-        android:id="@+id/checkBox3"
+        android:id="@+id/naPrice"
         android:layout_marginTop="13dp"
-        android:layout_below="@+id/textView42"
+        android:layout_below="@+id/approximatePriceLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:checked="false" />
@@ -85,8 +85,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Gratuity: $"
-        android:id="@+id/textView43"
-        android:layout_below="@+id/checkBox3"
+        android:id="@+id/gratuityLabel"
+        android:layout_below="@+id/naPrice"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="27dp" />
@@ -96,11 +96,11 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/editText12"
-        android:layout_alignBaseline="@+id/textView43"
-        android:layout_alignBottom="@+id/textView43"
-        android:layout_toRightOf="@+id/textView43"
-        android:layout_toEndOf="@+id/textView43" />
+        android:id="@+id/gratuityId"
+        android:layout_alignBaseline="@+id/gratuityLabel"
+        android:layout_alignBottom="@+id/gratuityLabel"
+        android:layout_toRightOf="@+id/gratuityLabel"
+        android:layout_toEndOf="@+id/gratuityLabel" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -108,7 +108,7 @@
         android:text="Remarks:"
         android:id="@+id/textView44"
         android:layout_marginTop="25dp"
-        android:layout_below="@+id/textView43"
+        android:layout_below="@+id/gratuityLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -117,17 +117,17 @@
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
         android:ems="10"
-        android:id="@+id/editText13"
-        android:layout_below="@+id/editText12"
-        android:layout_alignLeft="@+id/editText12"
-        android:layout_alignStart="@+id/editText12" />
+        android:id="@+id/remarksId"
+        android:layout_below="@+id/gratuityId"
+        android:layout_alignLeft="@+id/gratuityId"
+        android:layout_alignStart="@+id/gratuityId" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Address:"
         android:id="@+id/textView45"
-        android:layout_below="@+id/editText13"
+        android:layout_below="@+id/remarksId"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="18dp" />
@@ -136,8 +136,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignTop="@+id/textView45"
-        android:layout_alignLeft="@+id/editText13"
-        android:layout_alignStart="@+id/editText13">
+        android:layout_alignLeft="@+id/remarksId"
+        android:layout_alignStart="@+id/remarksId">
 
         <RadioButton
             android:layout_width="wrap_content"

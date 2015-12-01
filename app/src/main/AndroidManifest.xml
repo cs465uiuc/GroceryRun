@@ -27,7 +27,7 @@
         <activity android:name=".ContactUs" />
         <activity android:name=".Profile" />
         <activity android:name=".Transactions" />
-        <activity android:name=".Forum" />
+        <activity android:name=".Requester" />
         <activity android:name=".ConfirmTransaction" />
         <activity android:name=".FilterTransaction" />
         <activity android:name=".ViewTransaction" />
@@ -50,6 +50,8 @@
         <activity android:name=".Chat" >
         </activity>
         <activity android:name=".FilterAvailability" >
+        </activity>
+        <activity android:name=".PostRequest" >
         </activity>
     </application>
 

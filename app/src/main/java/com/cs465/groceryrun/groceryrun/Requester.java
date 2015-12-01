@@ -1,22 +1,25 @@
 package com.cs465.groceryrun.groceryrun;
 
-import android.app.Activity;
 import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 
-public class FilterAvailability extends Activity {
+public class Requester extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_filter_availability);
+        setContentView(R.layout.activity_requester);
     }
 
-    public void apply(View v){
+    public void searchAvailabilities(View v){
         Intent intent = new Intent(this,SearchAvailabilities.class);
+        startActivity(intent);
+    }
+
+    public void postRequest(View v){
+        Intent intent = new Intent(this,PostRequest.class);
         startActivity(intent);
     }
 }

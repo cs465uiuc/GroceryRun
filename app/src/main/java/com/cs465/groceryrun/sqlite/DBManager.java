@@ -39,6 +39,8 @@ public class DBManager {
                             TransactionTable.COLUMN_NAME_ROLE,
                             TransactionTable.COLUMN_NAME_DATE,
                             TransactionTable.COLUMN_NAME_DUE_DATE,
+                            TransactionTable.COLUMN_NAME_ADDRESS,
+                            TransactionTable.COLUMN_NAME_NOTE,
                             TransactionTable.COLUMN_NAME_STATUS,
                             TransactionTable.COLUMN_NAME_RATING,
                             TransactionTable.COLUMN_NAME_AMOUNT, };
@@ -64,6 +66,8 @@ public class DBManager {
             t.setRole(c.getString(c.getColumnIndexOrThrow(TransactionTable.COLUMN_NAME_ROLE)));
             t.setDate(c.getString(c.getColumnIndexOrThrow(TransactionTable.COLUMN_NAME_DATE)));
             t.setDueDate(c.getString(c.getColumnIndexOrThrow(TransactionTable.COLUMN_NAME_DUE_DATE)));
+            t.setAddress(c.getString(c.getColumnIndexOrThrow(TransactionTable.COLUMN_NAME_ADDRESS)));
+            t.setNote(c.getString(c.getColumnIndexOrThrow(TransactionTable.COLUMN_NAME_NOTE)));
             t.setStatus(c.getString(c.getColumnIndexOrThrow(TransactionTable.COLUMN_NAME_STATUS)));
             t.setRating(c.getDouble(c.getColumnIndexOrThrow(TransactionTable.COLUMN_NAME_RATING)));
             t.setAmount(c.getDouble(c.getColumnIndexOrThrow(TransactionTable.COLUMN_NAME_AMOUNT)));
@@ -76,7 +80,7 @@ public class DBManager {
     }
 
 
-    public void addTransaction(String title, String person, String role, String dueDate, double amount, String specificDate) {
+    public void addTransaction(String title, String person, String role, String dueDate, double amount, String address, String note, String specificDate) {
         db = dbHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -89,8 +93,9 @@ public class DBManager {
         else
             values.put(TransactionTable.COLUMN_NAME_DATE, CalendarConverter.convertCalendarToString(Calendar.getInstance(), true));
         values.put(TransactionTable.COLUMN_NAME_DUE_DATE, dueDate);
+        values.put(TransactionTable.COLUMN_NAME_ADDRESS, address);
+        values.put(TransactionTable.COLUMN_NAME_NOTE, note);
         values.put(TransactionTable.COLUMN_NAME_STATUS, "Due");
-        //values.put(TransactionTable.COLUMN_NAME_STATUS, "Delivered");
         values.put(TransactionTable.COLUMN_NAME_RATING, 0.0);
         values.put(TransactionTable.COLUMN_NAME_AMOUNT, amount);
 

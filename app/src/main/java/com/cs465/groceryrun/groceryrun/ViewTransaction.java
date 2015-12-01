@@ -16,6 +16,8 @@ import android.widget.TextView;
 import com.cs465.groceryrun.enums.Transaction;
 import com.cs465.groceryrun.sqlite.DBManager;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 /**
@@ -28,6 +30,8 @@ public class ViewTransaction extends AppCompatActivity {
     private String date;
     private String due_date;
     private String role;
+    private String note;
+    private String address;
     private String status;
     private double rating;
     private double amount;
@@ -53,6 +57,8 @@ public class ViewTransaction extends AppCompatActivity {
             date = transaction.getDate();
             due_date = transaction.getDueDate();
             role = transaction.getRole();
+            note = transaction.getNote();
+            address = transaction.getAddress();
             status = transaction.getStatus();
             rating = transaction.getRating();
             amount = transaction.getAmount();
@@ -72,8 +78,10 @@ public class ViewTransaction extends AppCompatActivity {
         RatingBar rateBar = (RatingBar) findViewById(R.id.transactionRate);
 
         TextView transactionTitle = (TextView) findViewById(R.id.transactionTitle);
+        TextView transactionNote = (TextView) findViewById(R.id.transactionNote);
         TextView transactionPerson = (TextView) findViewById(R.id.transactionPerson);
         TextView transactionAmount = (TextView) findViewById(R.id.transactionAmount);
+        TextView transactionAddress = (TextView) findViewById(R.id.transactionAddress);
 
         if(date != null)
             reqestDateText.setText("Requested\n" + date);
@@ -166,6 +174,16 @@ public class ViewTransaction extends AppCompatActivity {
         if(title != null)
             transactionTitle.setText(title);
 
+        if(amount >= 0)
+            transactionAmount.setText("Agreed fees: $" + String.format("%.2f", amount));
+
+        if(note != null) {
+            if(note.equals(""))
+                transactionNote.setText("Note: none");
+            else
+                transactionNote.setText("Note: " + note);
+        }
+
         if(role != null && person != null) {
             if(role.equals("Shopper")) //2nd party is a buyer
                 transactionPerson.setText("Requested by: " + person);
@@ -173,8 +191,8 @@ public class ViewTransaction extends AppCompatActivity {
                 transactionPerson.setText("Shopper: " + person);
         }
 
-        if(amount >= 0)
-            transactionAmount.setText("Agreed fees: $" + String.format("%.2f", amount));
+        if(address != null)
+            transactionAddress.setText("Shipping to:\n\n   "+address);
 
     }
 

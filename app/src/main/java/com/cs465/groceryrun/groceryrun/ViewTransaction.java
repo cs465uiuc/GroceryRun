@@ -1,10 +1,12 @@
 package com.cs465.groceryrun.groceryrun;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -13,7 +15,6 @@ import android.widget.TextView;
 
 import com.cs465.groceryrun.enums.Transaction;
 import com.cs465.groceryrun.sqlite.DBManager;
-
 
 import java.util.ArrayList;
 
@@ -57,15 +58,17 @@ public class ViewTransaction extends AppCompatActivity {
             amount = transaction.getAmount();
         }
 
+        ImageView roleImage = (ImageView) findViewById(R.id.roleImage);
         TextView reqestDateText = (TextView) findViewById(R.id.requestDateText);
         TextView dueDateText = (TextView) findViewById(R.id.dueDateText);
+        TextView progressText = (TextView) findViewById(R.id.progressText);
         RadioGroup progressButtonGroup = (RadioGroup) findViewById(R.id.progreeButtonGroup);
         RadioButton requestReceivedBtn = (RadioButton) findViewById(R.id.progressRequestReceived);
         RadioButton shoppingBtn = (RadioButton) findViewById(R.id.progressShopping);
         RadioButton deliveringBtn = (RadioButton) findViewById(R.id.progressDelivering);
         RadioButton deliveredBtn = (RadioButton) findViewById(R.id.progressDelivered);
         ProgressBar transactionProgress = (ProgressBar) findViewById(R.id.transactionProgress);
-        Button confirmBtn = (Button) findViewById(R.id.dtransaction_confirmBtn);
+        ImageButton confirmBtn = (ImageButton) findViewById(R.id.dtransaction_confirmBtn);
         RatingBar rateBar = (RatingBar) findViewById(R.id.transactionRate);
 
         TextView transactionTitle = (TextView) findViewById(R.id.transactionTitle);
@@ -83,19 +86,35 @@ public class ViewTransaction extends AppCompatActivity {
         confirmBtn.setVisibility(View.GONE);
         rateBar.setVisibility(View.GONE);
         if(status != null) {
-            if (status.equals("Request Received"))
+
+            if(status.equals("Due"))
+                progressText.setText("Request Received");
+            else
+                progressText.setText(status);
+
+            if (status.equals("Request Received") || status.equals("Due")) {
                 transactionProgress.setProgress(Transaction.PROGRESS_REQUEST_RECEIVED);
-            else if (status.equals("Shopping"))
+                progressText.setTextColor(getResources().getColor(R.color.FlatWhite));
+                requestReceivedBtn.setChecked(true);
+            } else if (status.equals("Shopping")) {
                 transactionProgress.setProgress(Transaction.PROGRESS_SHOPPING);
-            else if (status.equals("Delivering"))
+                progressText.setTextColor(getResources().getColor(R.color.FlatDarkBlue));
+                shoppingBtn.setChecked(true);
+            }
+            else if (status.equals("Delivering")) {
                 transactionProgress.setProgress(Transaction.PROGRESS_DELIVERING);
+                progressText.setTextColor(getResources().getColor(R.color.FlatDarkBlue));
+                deliveringBtn.setChecked(true);
+            }
             else if (status.equals("Delivered")) {
                 transactionProgress.setProgress(Transaction.PROGRESS_DELIVERED);
+                progressText.setTextColor(getResources().getColor(R.color.FlatOrange));
                 progressButtonGroup.setVisibility(View.GONE);
                 confirmBtn.setVisibility(View.VISIBLE);
             }
             else if (status.equals("Confirmed")) {
                 transactionProgress.setProgress(Transaction.PROGRESS_CONFIRMED);
+                progressText.setTextColor(getResources().getColor(R.color.FlatGreen));
                 progressButtonGroup.setVisibility(View.GONE);
                 rateBar.setVisibility(View.VISIBLE);
             }
@@ -105,37 +124,43 @@ public class ViewTransaction extends AppCompatActivity {
 
 
         if(role.equals("Buyer")) {
+            roleImage.setImageResource(R.mipmap.icon_buyer);
+
             progressButtonGroup.setVisibility(View.GONE);
-        } else if(!status.equals("Delivered") && !status.equals("Confirmed")) {
-            progressButtonGroup.setVisibility(View.VISIBLE);
-            requestReceivedBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    db.editTransaction(transactionID, "Request Received", -1);
-                    refreshActivity();
-                }
-            });
-            shoppingBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    db.editTransaction(transactionID, "Shopping", -1);
-                    refreshActivity();
-                }
-            });
-            deliveringBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    db.editTransaction(transactionID, "Delivering", -1);
-                    refreshActivity();
-                }
-            });
-            deliveredBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    db.editTransaction(transactionID, "Delivered", -1);
-                    refreshActivity();
-                }
-            });
+        } else {
+            roleImage.setImageResource(R.mipmap.icon_shopper);
+
+            if(!status.equals("Delivered") && !status.equals("Confirmed")) {
+                progressButtonGroup.setVisibility(View.VISIBLE);
+                requestReceivedBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        db.editTransaction(transactionID, "Request Received", -1);
+                        refreshActivity();
+                    }
+                });
+                shoppingBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        db.editTransaction(transactionID, "Shopping", -1);
+                        refreshActivity();
+                    }
+                });
+                deliveringBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        db.editTransaction(transactionID, "Delivering", -1);
+                        refreshActivity();
+                    }
+                });
+                deliveredBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        db.editTransaction(transactionID, "Delivered", -1);
+                        refreshActivity();
+                    }
+                });
+            }
         }
 
         if(title != null)

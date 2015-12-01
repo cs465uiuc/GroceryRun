@@ -6,15 +6,32 @@
     android:id="@+id/transaction_detailview"
     android:orientation="vertical"
     android:weightSum="6"
+    android:background="@color/FlatBlue"
     tools:context="com.cs465.groceryrun.groceryrun.ViewTransaction">
 
-    <Button
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:id="@+id/backToOverviewButton"
-        android:text="Back"
-        android:onClick="backToOverview"/>
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="5dp"
+            android:id="@+id/backToOverviewButton"
+            android:background="@mipmap/icon_back"
+            android:onClick="backToOverview"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/roleImage"
+            android:layout_margin="5dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:background="@mipmap/icon_buyer"/>
+
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -24,11 +41,22 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold"
+            android:id="@+id/progressText"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="Transaction Received"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/requestDateText"
-            android:layout_alignParentTop="true"
+            android:layout_alignTop="@+id/progressText"
             android:layout_alignParentLeft="true"
             android:padding = "10dp"
             android:textAppearance="?android:attr/textAppearanceSmall"
@@ -38,18 +66,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/dueDateText"
-            android:layout_alignParentTop="true"
+            android:layout_alignTop="@+id/progressText"
             android:layout_alignParentRight="true"
             android:padding = "10dp"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text = "Due\n12/28/2015"/>
+
+
 
         <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/transactionProgress"
-            android:layout_below="@+id/dueDateText"
+            android:layout_below="@+id/requestDateText"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_centerHorizontal="true" />
@@ -76,7 +106,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="45dp"
+                android:layout_marginLeft="82dp"
                 android:id="@+id/progressShopping"
                 android:text=""
                 android:checked="false" />
@@ -85,7 +115,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="75dp"
+                android:layout_marginLeft="90dp"
                 android:id="@+id/progressDelivering"
                 android:text=""
                 android:checked="false" />
@@ -94,21 +124,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="100dp"
+                android:layout_marginLeft="90dp"
                 android:id="@+id/progressDelivered"
                 android:text=""
                 android:checked="false" />
 
         </RadioGroup>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageButton
+            android:layout_width="75dp"
+            android:layout_height="36dp"
             android:layout_below="@+id/transactionProgress"
             android:layout_alignParentRight="true"
             android:layout_margin="2dp"
             android:id="@+id/dtransaction_confirmBtn"
-            android:text="Confirm"
+            android:background="@mipmap/icon_confirm"
             android:onClick="confirmTrans"/>
 
         <RatingBar

@@ -58,19 +58,6 @@ public class Transactions extends AppCompatActivity {
                     Intent intent = new Intent(Transactions.this, ViewTransaction.class);
                     intent.putExtra("TRANSACTION_ID", clickedTransaction.getId());
                     startActivity(intent);
-                    /*
-                    Intent intent = new Intent(Transactions.this, ViewTransaction.class);
-                    TextView nameTxt = (TextView) v.findViewById(R.id.transaction_title);
-                    String name = nameTxt.getText().toString();
-                    TextView personTxt = (TextView) v.findViewById(R.id.transaction_person);
-                    String person = personTxt.getText().toString();
-                    TextView dateTxt = (TextView) v.findViewById(R.id.transaction_duedate);
-                    String date = dateTxt.getText().toString();
-                    intent.putExtra("TRANSACTION_NAME", name);
-                    intent.putExtra("TRANSACTION_PERSON", person);
-                    intent.putExtra("TRANSACTION_DATE", date);
-                    startActivity(intent);
-                    */
                     return false;
                 }
             });

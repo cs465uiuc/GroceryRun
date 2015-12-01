@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:background="@color/FlatGray"
     tools:context="com.cs465.groceryrun.groceryrun.FilterTransaction">
 
     <TextView

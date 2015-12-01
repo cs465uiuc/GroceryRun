@@ -1,11 +1,10 @@
 package com.cs465.groceryrun.groceryrun;
 
 import android.content.Intent;
-import android.media.Rating;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -18,7 +17,7 @@ public class ConfirmTransaction extends AppCompatActivity {
 
     private TextView confirmTxt;
     private RatingBar rBar;
-    private Button applyButton;
+    private ImageButton applyButton;
 
     private boolean tConfirmed;
 
@@ -29,7 +28,7 @@ public class ConfirmTransaction extends AppCompatActivity {
 
         confirmTxt = (TextView) findViewById(R.id.confirmText);
         rBar = (RatingBar) findViewById(R.id.transactionRating);
-        applyButton = (Button) findViewById(R.id.applyConfirmOrRating);
+        applyButton = (ImageButton) findViewById(R.id.applyConfirmOrRating);
 
         rBar.setVisibility(View.GONE);
         tConfirmed = false;
@@ -46,7 +45,7 @@ public class ConfirmTransaction extends AppCompatActivity {
 
             confirmTxt.setVisibility(View.GONE);
             rBar.setVisibility(View.VISIBLE);
-            applyButton.setText("Rate");
+            applyButton.setBackgroundResource(R.mipmap.btn_rate);
             tConfirmed = true;
         } else{
             db.editTransaction(transactionID, null, (double) rBar.getRating());

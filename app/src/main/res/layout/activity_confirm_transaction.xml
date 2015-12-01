@@ -7,13 +7,14 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/FlatGray"
     tools:context="com.cs465.groceryrun.groceryrun.ConfirmTransaction">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Your items are delivered! Please Confirm."
+        android:text="Your items are delivered!\nPlease Confirm."
         android:id="@+id/confirmText"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
@@ -26,20 +27,22 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="77dp" />
 
-    <Button
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Confirm"
+        android:layout_margin="5dp"
+        android:background="@mipmap/btn_confirm"
         android:id="@+id/applyConfirmOrRating"
         android:onClick="ConfirmOrRate"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="54dp" />
 
-    <Button
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Report a problem"
+        android:layout_margin="5dp"
+        android:background="@mipmap/btn_report"
         android:id="@+id/ReportBtn"
         android:layout_below="@+id/applyConfirmOrRating"
         android:layout_centerHorizontal="true" />

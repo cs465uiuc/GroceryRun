@@ -3,4 +3,14 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="FlatAqua">#FF8AC1C6</color>
+    <color name="FlatBlue">#FF67C7ED</color>
+    <color name="FlatGray">#FFEBEFF2</color>
+    <color name="FlatGreen">#FF1F7140</color>
+    <color name="FlatOrange">#FFF4A425</color>
+    <color name="FlatWhite">#FFF7F8F3</color>
+    <color name="FlatYellow">#FFF0C60F</color>
+    <color name="FlatDarkBlue">#FF236B9D</color>
+    F4A425
 </resources>

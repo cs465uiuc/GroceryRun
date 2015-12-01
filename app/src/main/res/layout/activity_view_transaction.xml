@@ -163,9 +163,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/transactionTitle"
-            android:padding = "10dp"
+            android:layout_marginTop="8dp"
+            android:paddingLeft = "10dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Grocery"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/transactionAmount"
+            android:layout_below = "@+id/transactionTitle"
+            android:layout_marginTop="8dp"
+            android:paddingLeft = "10dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Agreed fees: $0"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/transactionAmount"
+            android:id="@+id/transactionNote"
+            android:layout_marginTop="8dp"
+            android:paddingLeft = "10dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Note: "/>
 
     </RelativeLayout>
 
@@ -180,18 +201,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/transactionPerson"
-            android:padding = "10dp"
+            android:layout_marginTop="8dp"
+            android:paddingLeft = "10dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="By: Person"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/transactionAmount"
-            android:layout_below = "@+id/transactionPerson"
-            android:padding = "10dp"
+            android:layout_below="@+id/transactionPerson"
+            android:id="@+id/transactionAddress"
+            android:layout_marginTop="8dp"
+            android:paddingLeft = "10dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Agreed fees: $0"/>
+            android:text="Shopping to:\n"/>
 
     </RelativeLayout>
 

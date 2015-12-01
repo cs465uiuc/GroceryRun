@@ -17,6 +17,8 @@ public class Transaction {
     String role;
     String date;
     String dueDate;
+    String address;
+    String note;
     String status;
     double rating;
     double amount;
@@ -50,6 +52,14 @@ public class Transaction {
     public String getDueDate() {return dueDate;}
 
     public void setDueDate(String dueDate) {this.dueDate = dueDate;}
+
+    public String getAddress() {return address;}
+
+    public void setAddress(String address) {this.address = address;}
+
+    public String getNote() {return note;}
+
+    public void setNote(String note) {this.note = note;}
 
     public String getStatus() {return status;}
 

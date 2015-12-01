@@ -161,6 +161,9 @@ public class Transactions extends AppCompatActivity {
         else
             randDay = rand.nextInt(30-1) + 1;
 
+        String address = "123 E. Green, Champaign, IL 61820";
+        String note = "";
+
         int randAmt = rand.nextInt(300);
 
         DBManager db = new DBManager(this);
@@ -169,6 +172,8 @@ public class Transactions extends AppCompatActivity {
                             role,
                             CalendarConverter.convertCalendarIntToString(randYear, randMonth, randDay),
                             randAmt,
+                            address,
+                            note,
                             null);
     }
 

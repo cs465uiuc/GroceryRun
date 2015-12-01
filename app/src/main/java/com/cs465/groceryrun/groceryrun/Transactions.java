@@ -185,8 +185,13 @@ public class Transactions extends AppCompatActivity {
                             null);
     }
 
+    public void goBack (View v){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
     public void filterTrans(View v){
-        Intent intent = new Intent(this,FilterTransaction.class);
+        Intent intent = new Intent(this, FilterTransaction.class);
 
         intent.putExtra("FILTER_TYPE", filterType);
         intent.putExtra("FILTER_STATUS", filterStatus);

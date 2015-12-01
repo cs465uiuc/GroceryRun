@@ -13,10 +13,20 @@
     <ImageButton
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:id="@+id/backButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="8dp"
+        android:background="@mipmap/icon_back"
+        android:onClick="goBack"/>
+
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:id="@+id/filterButton"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_margin="5dp"
+        android:layout_margin="8dp"
         android:background="@mipmap/icon_filter"
         android:onClick="filterTrans"/>
 

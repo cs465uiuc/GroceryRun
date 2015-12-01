@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -96,7 +97,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         if(childStatus.equals("Delivered")) {
             TextView childText4 = (TextView) view.findViewById(R.id.transaction_duedate);
             childText4.setVisibility(View.GONE);
-            Button childBtn = (Button) view.findViewById(R.id.otransaction_confirmBtn);
+            ImageButton childBtn = (ImageButton) view.findViewById(R.id.otransaction_confirmBtn);
             childBtn.setVisibility(View.VISIBLE);
             childBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -108,13 +109,13 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
                 }
             });
         } else if (childStatus.equals("Confirmed"))  {
-            Button childBtn = (Button) view.findViewById(R.id.otransaction_confirmBtn);
+            ImageButton childBtn = (ImageButton) view.findViewById(R.id.otransaction_confirmBtn);
             childBtn.setVisibility(View.GONE);
             TextView childText4 = (TextView) view.findViewById(R.id.transaction_duedate);
             childText4.setVisibility(View.VISIBLE);
             childText4.setText("Rating: " + childRating);
         } else {
-            Button childBtn = (Button) view.findViewById(R.id.otransaction_confirmBtn);
+            ImageButton childBtn = (ImageButton) view.findViewById(R.id.otransaction_confirmBtn);
             childBtn.setVisibility(View.GONE);
             TextView childText4 = (TextView) view.findViewById(R.id.transaction_duedate);
             childText4.setVisibility(View.VISIBLE);

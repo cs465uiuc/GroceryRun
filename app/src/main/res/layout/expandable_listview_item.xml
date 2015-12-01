@@ -71,13 +71,13 @@
                 android:paddingLeft="1dp"
                 android:textColor="#FFFFFFFF" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/otransaction_confirmBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_width="50dp"
+                android:layout_height="24dp"
                 android:layout_weight="1"
                 android:layout_margin="2dp"
-                android:text="Confirm" />
+                android:background="@mipmap/icon_confirm" />
 
         </LinearLayout>
 

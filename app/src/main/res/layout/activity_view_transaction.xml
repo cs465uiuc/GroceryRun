@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:id="@+id/transaction_detailview"
     android:orientation="vertical"
-    android:weightSum="6"
+    android:weightSum="7"
     android:background="@color/FlatBlue"
     tools:context="com.cs465.groceryrun.groceryrun.ViewTransaction">
 
@@ -79,7 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/transactionProgress"
-            android:layout_below="@+id/requestDateText"
+            android:layout_below="@+id/dueDateText"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_centerHorizontal="true" />
@@ -155,7 +155,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight="3"
         android:id="@+id/transactionInfoLayout"
         android:layout_below="@+id/progressLayout">
 
@@ -168,22 +168,33 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Grocery"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <ListView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/transactionAmount"
-            android:layout_below = "@+id/transactionTitle"
-            android:layout_marginTop="8dp"
-            android:paddingLeft = "10dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Agreed fees: $0"/>
+            android:id="@+id/transactionGroceryList"
+            android:layout_below="@+id/transactionTitle"
+            android:layout_above="@+id/transactionGroceryPrice">
+
+        </ListView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/transactionAmount"
+            android:id="@+id/transactionGroceryPrice"
+            android:layout_above="@+id/transactionNote"
+            android:layout_marginTop="5dp"
+            android:paddingLeft = "10dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Approximate Price: $0"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:id="@+id/transactionNote"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
             android:paddingLeft = "10dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Note: "/>
@@ -209,7 +220,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/transactionPerson"
+            android:id="@+id/transactionGratuity"
+            android:layout_below = "@+id/transactionPerson"
+            android:layout_marginTop="8dp"
+            android:paddingLeft = "10dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Gratuity: $0"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/transactionGratuity"
             android:id="@+id/transactionAddress"
             android:layout_marginTop="8dp"
             android:paddingLeft = "10dp"

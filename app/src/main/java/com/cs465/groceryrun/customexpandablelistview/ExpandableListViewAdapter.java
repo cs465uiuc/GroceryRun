@@ -65,9 +65,18 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         final Transaction child = (Transaction) getChild(groupPosition, childPosition);
         final String childTitle = child.getTitle();
         final String childPerson = child.getPerson();
-        final String childAmount = String.format("%.2f", child.getAmount());
         final String childStatus = child.getStatus();
         final String childDueDate = child.getDueDate();
+        final String childDueTime;
+        if(child.getDueTime() < 0)
+            childDueTime = "";
+        else if(child.getDueTime() > 12)
+            childDueTime = Integer.toString(child.getDueTime()-12) + " pm";
+        else if(child.getDueTime() == 12)
+                childDueTime = Integer.toString(child.getDueTime()) + " pm";
+        else
+            childDueTime = Integer.toString(child.getDueTime()) + " am";
+
         final String childRating = Double.toString(child.getRating());
 
         if (view == null) {
@@ -85,7 +94,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         childText1.setText(childTitle);
 
         TextView childText2 = (TextView) view.findViewById(R.id.transaction_person);
-        childText2.setText(childPerson + ", $" + childAmount);
+        childText2.setText(childPerson);
 
         TextView childText3 = (TextView) view.findViewById(R.id.transaction_status);
         if(!childStatus.equals("Delivered") && !childStatus.equals("Confirmed"))
@@ -118,7 +127,10 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
             childBtn.setVisibility(View.GONE);
             TextView childText4 = (TextView) view.findViewById(R.id.transaction_duedate);
             childText4.setVisibility(View.VISIBLE);
-            childText4.setText(childDueDate);
+            if(childDueTime == "")
+                childText4.setText(childDueDate);
+            else
+                childText4.setText(childDueDate + ", " + childDueTime);
         }
         return view;
     }

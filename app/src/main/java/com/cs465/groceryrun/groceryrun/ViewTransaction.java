@@ -1,18 +1,21 @@
 package com.cs465.groceryrun.groceryrun;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.cs465.groceryrun.customexpandablelistview.GroceryListviewAdapter;
+import com.cs465.groceryrun.enums.GroceryListItem;
 import com.cs465.groceryrun.enums.Transaction;
 import com.cs465.groceryrun.sqlite.DBManager;
 
@@ -29,15 +32,20 @@ public class ViewTransaction extends AppCompatActivity {
     private String person;
     private String date;
     private String due_date;
+    private int due_time;
     private String role;
+    private ArrayList<GroceryListItem> groceryList;
     private String note;
     private String address;
     private String status;
     private double rating;
-    private double amount;
+    private double grocery_price;
+    private double gratuity;
 
     private DBManager db;
     private int transactionID;
+
+    private GroceryListviewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,12 +64,15 @@ public class ViewTransaction extends AppCompatActivity {
             person = transaction.getPerson();
             date = transaction.getDate();
             due_date = transaction.getDueDate();
+            due_time = transaction.getDueTime();
             role = transaction.getRole();
+            groceryList = transaction.getGroceryList();
             note = transaction.getNote();
             address = transaction.getAddress();
             status = transaction.getStatus();
             rating = transaction.getRating();
-            amount = transaction.getAmount();
+            grocery_price = transaction.getGroceryPrice();
+            gratuity = transaction.getGratuity();
         }
 
         ImageView roleImage = (ImageView) findViewById(R.id.roleImage);
@@ -78,15 +89,25 @@ public class ViewTransaction extends AppCompatActivity {
         RatingBar rateBar = (RatingBar) findViewById(R.id.transactionRate);
 
         TextView transactionTitle = (TextView) findViewById(R.id.transactionTitle);
+        TextView transactionGroceryPrice = (TextView) findViewById(R.id.transactionGroceryPrice);
         TextView transactionNote = (TextView) findViewById(R.id.transactionNote);
+        ListView transactionGroceryList = (ListView) findViewById(R.id.transactionGroceryList);
         TextView transactionPerson = (TextView) findViewById(R.id.transactionPerson);
-        TextView transactionAmount = (TextView) findViewById(R.id.transactionAmount);
+        TextView transactionGratuity = (TextView) findViewById(R.id.transactionGratuity);
         TextView transactionAddress = (TextView) findViewById(R.id.transactionAddress);
 
         if(date != null)
             reqestDateText.setText("Requested\n" + date);
-        if(due_date != null)
-            dueDateText.setText("Due\n" + due_date);
+        if(due_date != null && due_time >= 0) {
+            String dueTimeText;
+            if(due_time > 12)
+                dueTimeText = Integer.toString(due_time-12) + " pm";
+            else if(due_time == 12)
+                dueTimeText = Integer.toString(due_time) + " pm";
+            else
+                dueTimeText = Integer.toString(due_time) + " am";
+            dueDateText.setText("Due\n" + due_date + "\n" + dueTimeText);
+        }
 
         if(rating >= 0)
             rateBar.setRating((float) rating);
@@ -174,8 +195,17 @@ public class ViewTransaction extends AppCompatActivity {
         if(title != null)
             transactionTitle.setText(title);
 
-        if(amount >= 0)
-            transactionAmount.setText("Agreed fees: $" + String.format("%.2f", amount));
+        if(groceryList != null && groceryList.size() > 0) {
+            adapter = new GroceryListviewAdapter(this, role, groceryList);
+            transactionGroceryList.setAdapter(adapter);
+            transactionGroceryList.setDivider(null);
+        }
+
+        if(grocery_price >= 0) {
+            transactionGroceryPrice.setText("Approximate Price: $" + String.format("%.2f", grocery_price));
+        } else {
+            transactionGroceryPrice.setText("Approximate Price: N/A");
+        }
 
         if(note != null) {
             if(note.equals(""))
@@ -190,6 +220,9 @@ public class ViewTransaction extends AppCompatActivity {
             else
                 transactionPerson.setText("Shopper: " + person);
         }
+
+        if(gratuity >= 0)
+            transactionGratuity.setText("Gratuity: $" + String.format("%.2f", gratuity));
 
         if(address != null)
             transactionAddress.setText("Shipping to:\n\n   "+address);

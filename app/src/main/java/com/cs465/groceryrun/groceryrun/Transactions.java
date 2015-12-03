@@ -12,6 +12,7 @@ import android.widget.ExpandableListView;
 
 import com.cs465.groceryrun.Utils.CalendarConverter;
 import com.cs465.groceryrun.customexpandablelistview.ExpandableListViewAdapter;
+import com.cs465.groceryrun.enums.GroceryListItem;
 import com.cs465.groceryrun.enums.Transaction;
 import com.cs465.groceryrun.sqlite.DBManager;
 
@@ -137,7 +138,7 @@ public class Transactions extends AppCompatActivity {
         String person = nameList[rand.nextInt(nameList.length)];
 
         String role;
-        if(rand.nextInt(3) == 1)
+        if(rand.nextBoolean())
             role = "Shopper";
         else
             role = "Buyer";
@@ -148,33 +149,71 @@ public class Transactions extends AppCompatActivity {
         int curDay = CalendarConverter.convertCalendarToInt(c, CalendarConverter.DAY, true);
         int randYear = rand.nextInt(5) + curYear;
         int randMonth;
-        if(curYear == randYear)
-            randMonth = rand.nextInt(12-curMonth) + curMonth;
-        else
+        if(curYear == randYear) {
+            if(12-curMonth == 0)
+                randMonth = 0;
+            else
+                randMonth = rand.nextInt(12 - curMonth) + curMonth;
+        }  else
             randMonth = rand.nextInt(12-1) + 1;
         int randDay;
         if(curYear == randYear && curMonth == randMonth)
-            if(curDay < 30)
-                randDay = rand.nextInt(30-curDay) + curDay;
+            if(curDay < 30) {
+                if(30-curDay <= 0)
+                    randDay = curDay;
+                else
+                    randDay = rand.nextInt(30-curDay) + curDay;
+            }
             else
                 randDay = rand.nextInt(30-1) + 1;
         else
             randDay = rand.nextInt(30-1) + 1;
 
+        int randHour = rand.nextInt(25) - 1;
+
         String address = "123 E. Green, Champaign, IL 61820";
         String note = "";
 
-        int randAmt = rand.nextInt(300);
+        double randGratuity = (double) rand.nextInt(125);
+        double randGroceryPrice = (double) rand.nextInt(500) - 100;
 
         DBManager db = new DBManager(this);
-        db.addTransaction(  "Grocery",
-                            person,
-                            role,
-                            CalendarConverter.convertCalendarIntToString(randYear, randMonth, randDay),
-                            randAmt,
-                            address,
-                            note,
-                            null);
+
+        String[] itemNameList = {"Meat", "Veggie", "Bean", "Ice Cream", "Cheese", "Orange juice", "Apples", "Bananas"};
+        ArrayList<GroceryListItem> gList = new ArrayList<GroceryListItem>();
+        for(int i=0; i<rand.nextInt(6)+3; i++) {
+            GroceryListItem gListItem = new GroceryListItem();
+            gListItem.setItem(itemNameList[rand.nextInt(itemNameList.length)]);
+            gListItem.setItemQuantity(rand.nextInt(3)+1);
+            gList.add(gListItem);
+        }
+
+        if(rand.nextBoolean()) {
+            db.addTransaction(  "Grocery",
+                                person,
+                                role,
+                                gList,
+                                CalendarConverter.convertCalendarIntToString(randYear, randMonth, randDay),
+                                address,
+                                note,
+                                randGratuity,
+                                randHour,
+                                randGroceryPrice,
+                                null);
+        } else {
+            db.addTransaction(  "Grocery",
+                                person,
+                                role,
+                                gList,
+                                CalendarConverter.convertCalendarIntToString(randYear, randMonth, randDay),
+                                address,
+                                note,
+                                randGratuity,
+                                -1,
+                                -1,
+                                null);
+        }
+
     }
 
     public void goBack (View v){

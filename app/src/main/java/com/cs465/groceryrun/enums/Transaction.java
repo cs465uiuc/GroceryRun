@@ -1,5 +1,7 @@
 package com.cs465.groceryrun.enums;
 
+import java.util.ArrayList;
+
 /**
  * Created by Oleksiy Kamenyev on 11/27/2015.
  */
@@ -12,16 +14,20 @@ public class Transaction {
     public static final int PROGRESS_CONFIRMED = 100;
 
     int id = -1;
-    String name;
+    String timestamp;
+    String title;
     String person;
     String role;
+    ArrayList<GroceryListItem> groceryList;
     String date;
     String dueDate;
+    int dueTime;
     String address;
     String note;
     String status;
     double rating;
-    double amount;
+    double groceryPrice = -1;
+    double gratuity;
 
     public Transaction () {}
 
@@ -29,21 +35,25 @@ public class Transaction {
 
     public void setId(int id) {this.id = id;}
 
-    public String getTitle() {return name;}
+    public String getTimestamp () {return timestamp;}
 
-    public void setTitle(String name) {this.name = name;}
+    public void setTimestamp (String timestamp) {this.timestamp = timestamp;}
 
-    public String getPerson() {
-        return person;
-    }
+    public String getTitle() {return title;}
 
-    public void setPerson(String person) {
-        this.person = person;
-    }
+    public void setTitle(String title) {this.title = title;}
+
+    public String getPerson() { return person; }
+
+    public void setPerson(String person) { this.person = person;}
 
     public String getRole() {return role;}
 
     public void setRole(String role) {this.role = role;}
+
+    public ArrayList<GroceryListItem> getGroceryList () {return groceryList;}
+
+    public void setGroceryList (ArrayList<GroceryListItem> groceryList) {this.groceryList = groceryList;}
 
     public String getDate() {return date;}
 
@@ -52,6 +62,10 @@ public class Transaction {
     public String getDueDate() {return dueDate;}
 
     public void setDueDate(String dueDate) {this.dueDate = dueDate;}
+
+    public int getDueTime () {return dueTime;}
+
+    public void setDueTime (int dueTime) {this.dueTime = dueTime;}
 
     public String getAddress() {return address;}
 
@@ -69,7 +83,11 @@ public class Transaction {
 
     public void setRating (double rating) {this.rating = rating;}
 
-    public double getAmount() {return amount;}
+    public double getGroceryPrice () {return groceryPrice;}
 
-    public void setAmount(double amount) {this.amount = amount;}
+    public void setGroceryPrice (double groceryPrice) {this.groceryPrice = groceryPrice;}
+
+    public double getGratuity() {return gratuity;}
+
+    public void setGratuity(double amount) {this.gratuity = amount;}
 }

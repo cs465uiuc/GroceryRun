@@ -12,65 +12,53 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Profile:"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/textView14"
-        android:layout_marginLeft="31dp"
-        android:layout_marginStart="31dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="Profile:"/>
 
-    <Button
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Change Password"
+        android:background="@mipmap/btn_changepw"
         android:id="@+id/button10"
         android:layout_below="@+id/textView14"
         android:layout_toRightOf="@+id/textView14"
         android:layout_toEndOf="@+id/textView14"
         android:onClick="newPassword" />
 
-    <Button
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Change Phone Number"
+        android:background="@mipmap/btn_changephonenumber"
         android:id="@+id/button11"
         android:layout_below="@+id/button10"
         android:layout_alignLeft="@+id/button10"
         android:layout_alignStart="@+id/button10"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
         android:onClick="newPhone" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Notifications:"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/textView15"
         android:layout_below="@+id/button11"
-        android:layout_alignLeft="@+id/textView14"
-        android:layout_alignStart="@+id/textView14" />
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="Notifications:"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Privacy:"
-        android:id="@+id/textView16"
-        android:layout_below="@+id/textView15"
-        android:layout_alignLeft="@+id/textView15"
-        android:layout_alignStart="@+id/textView15"
-        android:layout_marginTop="105dp" />
 
     <RadioGroup
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/textView15"
-        android:layout_alignLeft="@+id/textView15"
-        android:layout_alignStart="@+id/textView15"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignBottom="@+id/textView16"
         android:id="@+id/notification">
 
         <RadioButton
@@ -95,21 +83,21 @@
             android:checked="false" />
     </RadioGroup>
 
-    <Button
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save"
-        android:id="@+id/button12"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="back" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/textView16"
+        android:layout_below="@+id/notification"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:text="Privacy: "/>
 
     <RadioGroup
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/textView16"
-        android:layout_alignLeft="@+id/textView16"
-        android:layout_alignStart="@+id/textView16">
+        android:id="@+id/privacySettingsGroup">
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -132,5 +120,16 @@
             android:id="@+id/radioButton6"
             android:checked="false" />
     </RadioGroup>
+
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:id="@+id/button12"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:background="@mipmap/icon_save"
+        android:onClick="apply" />
 
 </RelativeLayout>

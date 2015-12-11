@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="@color/FlatGray"
+    android:background="@color/FlatWhite"
     tools:context="com.cs465.groceryrun.groceryrun.FilterTransaction">
 
     <TextView
@@ -15,7 +15,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_margin="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:text="Type"/>
 
     <RadioGroup
@@ -52,7 +53,8 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/filterStatus"
         android:layout_below="@+id/filterTypeGroup"
-        android:layout_margin="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
         android:text="Status"/>
 
     <RadioGroup
@@ -89,7 +91,8 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/filterTime"
         android:layout_below="@+id/filterStatusGroup"
-        android:layout_margin="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
         android:text="Time"/>
 
     <RadioGroup

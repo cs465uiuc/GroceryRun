@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,7 +32,7 @@ public class Sign_in extends AppCompatActivity {
     }
 
     public void info(View v){
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom));
         builder1.setMessage("An application that helps those in need of groceries by providing a medium to communicate with those who can help deliver.");
         builder1.setCancelable(true);
         AlertDialog alert11 = builder1.create();
@@ -40,3 +41,4 @@ public class Sign_in extends AppCompatActivity {
 
 
 }
+

@@ -22,4 +22,14 @@ public class Requester extends AppCompatActivity{
         Intent intent = new Intent(this,PostRequest.class);
         startActivity(intent);
     }
+
+    public void homePage(View v){
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void profilePage(View v){
+        Intent intent = new Intent(this,Profile.class);
+        startActivity(intent);
+    }
 }

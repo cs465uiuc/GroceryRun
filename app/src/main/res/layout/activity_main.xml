@@ -8,148 +8,250 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.cs465.groceryrun.groceryrun.MainActivity"
-    android:background="#FF67C7ED">
+    android:background="@mipmap/background2">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Welcome to Grocery Run"
-        android:id="@+id/textView13"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#c43cb8c1">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="150dp"></LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="GroceryRun"
+                    android:id="@+id/textView57"
+                    android:gravity="center_vertical|right"
+                    android:layout_weight="4"
+                    android:textSize="35sp" />
+
+                <ImageView
+                    android:layout_width="69dp"
+                    android:layout_height="69dp"
+                    android:id="@+id/imageView3"
+                    android:src="@mipmap/icon_cartb"
+                    android:scaleType="fitCenter" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"></LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Grocery shopping made simple. "
+                android:id="@+id/textView13"
+                android:textColor="#ffffff" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="30dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingLeft="60dp"
+                android:paddingRight="45dp">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="profile"
+                        android:id="@+id/imageButton11"
+                        android:src="@mipmap/icon_user"
+                        android:background="#00000000" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Profile"
+                        android:id="@+id/textView58" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="40dp"></LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageButton12"
+                        android:onClick="deliver"
+                        android:src="@mipmap/icon_delivery"
+                        android:background="#00000000" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Delivery"
+                        android:id="@+id/textView59"
+                        android:gravity="center" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="40dp"></LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageButton13"
+                        android:onClick="request"
+                        android:src="@mipmap/icon_request"
+                        android:background="#00000000"
+                        android:layout_gravity="right" />
+
+                    <TextView
+                        android:layout_width="62dp"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Request"
+                        android:id="@+id/textView60"
+                        android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="35dp"
+                android:paddingTop="45dp">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageButton"
+                        android:onClick="transactions"
+                        android:src="@mipmap/icon_transaction"
+                        android:background="#00000000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Transactions"
+                        android:id="@+id/textView18" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="40dp"></LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageButton2"
+                        android:onClick="settings"
+                        android:src="@mipmap/icon_settings"
+                        android:background="#00000000" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Settings"
+                        android:id="@+id/textView19" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="40dp"></LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageButton14"
+                        android:onClick="contact"
+                        android:src="@mipmap/icon_contact"
+                        android:background="#00000000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Contact Us"
+                        android:id="@+id/textView23" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageButton"
-        android:text="@string/icon_user"
-        android:textSize="24dp"
-        android:onClick="profile"
-        android:layout_marginTop="21dp"
-        android:layout_below="@+id/textView13"
-        android:layout_toLeftOf="@+id/textView20"
-        android:layout_toStartOf="@+id/textView20" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageButton2"
-        android:text="@string/icon_news"
-        android:textSize="24dp"
-        android:onClick="request"
-        android:layout_marginTop="26dp"
-        android:layout_below="@+id/button18"
-        android:layout_toLeftOf="@+id/textView19"
-        android:layout_toStartOf="@+id/textView19" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageButton3"
-        android:text="@string/icon_usd"
-        android:textSize="24dp"
-        android:onClick="transactions"
-        android:layout_marginTop="24dp"
-        android:layout_below="@+id/imageButton2"
-        android:layout_alignLeft="@+id/imageButton4"
-        android:layout_alignStart="@+id/imageButton4" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageButton4"
-        android:text="@string/icon_gear"
-        android:textSize="24dp"
-        android:onClick="settings"
-        android:layout_below="@+id/imageButton3"
-        android:layout_toLeftOf="@+id/textView21"
-        android:layout_toStartOf="@+id/textView21"
-        android:layout_marginTop="22dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageButton5"
-        android:text="@string/icon_phone"
-        android:textSize="24dp"
-        android:layout_marginTop="21dp"
-        android:onClick="contact"
-        android:layout_below="@+id/imageButton4"
-        android:layout_alignLeft="@+id/imageButton4"
-        android:layout_alignStart="@+id/imageButton4" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Profile"
-        android:id="@+id/textView18"
-        android:layout_marginRight="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_alignBaseline="@+id/imageButton"
-        android:layout_alignBottom="@+id/imageButton"
-        android:layout_alignRight="@+id/textView13" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Request"
-        android:id="@+id/textView19"
-        android:layout_alignBaseline="@+id/imageButton2"
-        android:layout_alignBottom="@+id/imageButton2"
-        android:layout_alignRight="@+id/textView18"
-        android:layout_alignEnd="@+id/textView18" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Transactions"
-        android:id="@+id/textView20"
-        android:layout_alignBaseline="@+id/imageButton3"
-        android:layout_alignBottom="@+id/imageButton3"
-        android:layout_alignLeft="@+id/textView21"
-        android:layout_alignStart="@+id/textView21" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Settings"
-        android:id="@+id/textView21"
-        android:layout_alignBaseline="@+id/imageButton4"
-        android:layout_alignBottom="@+id/imageButton4"
-        android:layout_alignRight="@+id/textView19"
-        android:layout_alignEnd="@+id/textView19" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Contact Us"
-        android:id="@+id/textView22"
-        android:layout_alignBaseline="@+id/imageButton5"
-        android:layout_alignBottom="@+id/imageButton5"
-        android:layout_toRightOf="@+id/imageButton5"
-        android:layout_toEndOf="@+id/imageButton5" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button18"
-        android:text="@string/icon_car"
-        android:textSize="24dp"
-        android:onClick="deliver"
-        android:layout_marginTop="21dp"
-        android:layout_below="@+id/imageButton"
-        android:layout_toLeftOf="@+id/textView23"
-        android:layout_toStartOf="@+id/textView23" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Deliver"
-        android:id="@+id/textView23"
-        android:layout_alignBaseline="@+id/button18"
-        android:layout_alignBottom="@+id/button18"
-        android:layout_alignLeft="@+id/textView19"
-        android:layout_alignStart="@+id/textView19" />
+        android:layout_marginRight="32dp"
+        android:layout_marginEnd="32dp"></LinearLayout>
 
 </RelativeLayout>

@@ -7,17 +7,38 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.cs465.groceryrun.groceryrun.Confirm_Email">
+    tools:context="com.cs465.groceryrun.groceryrun.Confirm_Email"
+    android:background="@mipmap/confirm_background">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Please login to your email address to confirm your email before proceeding"
-        android:id="@+id/textView12"
-        android:layout_marginTop="111dp"
-        android:layout_alignWithParentIfMissing="false"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="200dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Please confirm your email address"
+            android:id="@+id/textView11"
+            android:gravity="center_horizontal" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="50dp"
+            android:onClick="home">
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButton3"
+                android:src="@mipmap/icon_back"
+                android:background="#00000000" />
+        </LinearLayout>
+    </LinearLayout>
+
 </RelativeLayout>

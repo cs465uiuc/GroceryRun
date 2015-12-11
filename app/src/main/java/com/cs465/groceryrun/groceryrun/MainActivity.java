@@ -14,19 +14,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Typeface font = Typeface.createFromAsset( getAssets(), "fontawesome-webfont.ttf" );
-        Button profileButton = (Button)findViewById( R.id.imageButton );
-        profileButton.setTypeface(font);
-        Button requestButton = (Button)findViewById( R.id.imageButton2 );
-        requestButton.setTypeface(font);
-        Button transactionButton = (Button)findViewById( R.id.imageButton3 );
-        transactionButton.setTypeface(font);
-        Button settingsButton = (Button)findViewById( R.id.imageButton4 );
-        settingsButton.setTypeface(font);
-        Button contactButton = (Button)findViewById( R.id.imageButton5 );
-        contactButton.setTypeface(font);
-        Button deliverButton = (Button)findViewById( R.id.button18 );
-        deliverButton.setTypeface(font);
     }
 
     public void settings(View v){

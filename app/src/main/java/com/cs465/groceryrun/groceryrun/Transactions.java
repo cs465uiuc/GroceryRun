@@ -21,7 +21,7 @@ public class Transactions extends AppCompatActivity {
     private ExpandableListView listView;
     private ExpandableListViewAdapter adapter;
 
-    private String filterType, filterStatus, filterTime;
+    protected static String filterType, filterStatus, filterTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

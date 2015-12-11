@@ -94,15 +94,14 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         childText1.setText(childTitle);
 
         TextView childText2 = (TextView) view.findViewById(R.id.transaction_person);
-        childText2.setText(childPerson);
+        childText2.setText("By: " + childPerson);
 
         TextView childText3 = (TextView) view.findViewById(R.id.transaction_status);
-        if(!childStatus.equals("Delivered") && !childStatus.equals("Confirmed"))
-            childText3.setText("Due");
-        else
-            childText3.setText(childStatus);
 
         if(childStatus.equals("Delivered")) {
+            childText3.setText(childStatus);
+            childText3.setTextColor(context.getResources().getColor(R.color.FlatOrange));
+
             TextView childText4 = (TextView) view.findViewById(R.id.transaction_duedate);
             childText4.setVisibility(View.GONE);
             ImageButton childBtn = (ImageButton) view.findViewById(R.id.otransaction_confirmBtn);
@@ -117,12 +116,18 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
                 }
             });
         } else if (childStatus.equals("Confirmed"))  {
+            childText3.setText(childStatus);
+            childText3.setTextColor(context.getResources().getColor(R.color.FlatGreen));
+
             ImageButton childBtn = (ImageButton) view.findViewById(R.id.otransaction_confirmBtn);
             childBtn.setVisibility(View.GONE);
             TextView childText4 = (TextView) view.findViewById(R.id.transaction_duedate);
             childText4.setVisibility(View.VISIBLE);
             childText4.setText("Rating: " + childRating);
         } else {
+            childText3.setText("Due");
+            childText3.setTextColor(context.getResources().getColor(R.color.FlatWhite));
+
             ImageButton childBtn = (ImageButton) view.findViewById(R.id.otransaction_confirmBtn);
             childBtn.setVisibility(View.GONE);
             TextView childText4 = (TextView) view.findViewById(R.id.transaction_duedate);

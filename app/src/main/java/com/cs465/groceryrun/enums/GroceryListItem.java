@@ -9,6 +9,7 @@ public class GroceryListItem {
     String associatedTransactionID = null;
     String item = null;
     int itemQuantity = 0;
+    boolean itemBought = false;
 
     public GroceryListItem() {}
 
@@ -27,4 +28,8 @@ public class GroceryListItem {
     public int getItemQuantity () {return itemQuantity;}
 
     public void setItemQuantity (int itemQuantity) {this.itemQuantity = itemQuantity;}
+
+    public boolean getIsItemBought () {return itemBought;}
+
+    public void setIsItemBought (boolean itemBought) {this.itemBought = itemBought;}
 }

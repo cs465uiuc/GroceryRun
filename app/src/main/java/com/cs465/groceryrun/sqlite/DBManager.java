@@ -149,8 +149,23 @@ public class DBManager {
         values.put(GroceryListItemTable.COLUMN_NAME_ASSOCIATED_TRANSACTION_ID, transactionID);
         values.put(GroceryListItemTable.COLUMN_NAME_ITEM, item);
         values.put(GroceryListItemTable.COLUMN_NAME_ITEM_QUANTITY, quantity);
+        values.put(GroceryListItemTable.COLUMN_NAME_ITEM_BOUGHT, 0);
 
         insert(GroceryListItemTable.TABLE_NAME, null, values);
+    }
+
+    public void editGroceryListItem(int id, boolean itemBought) {
+        db = dbHelper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        if(itemBought)
+            values.put(GroceryListItemTable.COLUMN_NAME_ITEM_BOUGHT, 1);
+        else
+            values.put(GroceryListItemTable.COLUMN_NAME_ITEM_BOUGHT, 0);
+
+        String[] whereArgs = {Integer.toString(id), };
+
+        db.update(GroceryListItemTable.TABLE_NAME, values, "_id=?", whereArgs);
     }
 
     public ArrayList<GroceryListItem> getAllGroceryListItems(String limit) {
@@ -160,7 +175,8 @@ public class DBManager {
         String[] columns = {GroceryListItemTable._ID,
                 GroceryListItemTable.COLUMN_NAME_ASSOCIATED_TRANSACTION_ID,
                 GroceryListItemTable.COLUMN_NAME_ITEM,
-                GroceryListItemTable.COLUMN_NAME_ITEM_QUANTITY, };
+                GroceryListItemTable.COLUMN_NAME_ITEM_QUANTITY,
+                GroceryListItemTable.COLUMN_NAME_ITEM_BOUGHT, };
 
         String sortBy = GroceryListItemTable.COLUMN_NAME_ASSOCIATED_TRANSACTION_ID + " ASC;";
 
@@ -180,6 +196,10 @@ public class DBManager {
             gList.setAssociatedTransactionID(c.getString(c.getColumnIndexOrThrow(GroceryListItemTable.COLUMN_NAME_ASSOCIATED_TRANSACTION_ID)));
             gList.setItem(c.getString(c.getColumnIndexOrThrow(GroceryListItemTable.COLUMN_NAME_ITEM)));
             gList.setItemQuantity(c.getInt(c.getColumnIndexOrThrow(GroceryListItemTable.COLUMN_NAME_ITEM_QUANTITY)));
+            if(c.getInt(c.getColumnIndexOrThrow(GroceryListItemTable.COLUMN_NAME_ITEM_BOUGHT)) == 1)
+                gList.setIsItemBought(true);
+            else
+                gList.setIsItemBought(false);
 
             groceryListItems.add(gList);
             c.moveToNext();

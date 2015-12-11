@@ -6,10 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.cs465.groceryrun.enums.GroceryListItem;
 import com.cs465.groceryrun.groceryrun.R;
+import com.cs465.groceryrun.sqlite.DBManager;
 
 import java.util.ArrayList;
 
@@ -42,7 +44,7 @@ public class GroceryListviewAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View view, ViewGroup parent) {
+    public View getView(final int position, View view, ViewGroup parent) {
 
 
         if (view == null) {
@@ -50,13 +52,23 @@ public class GroceryListviewAdapter extends BaseAdapter {
             view = (View) inflater.inflate(R.layout.grocery_listview_item, null);
         }
 
+        GroceryListItem gItem = groceryItems.get(position);
+        final int gItemId = gItem.getId();
+
         CheckBox groceryItemCheckbox = (CheckBox) view.findViewById(R.id.groceryItemCheckbox);
-        if(role.equals("Shopper"))
+        if(role.equals("Shopper")) {
             groceryItemCheckbox.setVisibility(View.VISIBLE);
-        else
+            groceryItemCheckbox.setChecked(gItem.getIsItemBought());
+            groceryItemCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    DBManager db = new DBManager(context);
+                    db.editGroceryListItem(gItemId, isChecked);
+                }
+            });
+        } else
             groceryItemCheckbox.setVisibility(View.GONE);
 
-        GroceryListItem gItem = groceryItems.get(position);
         TextView groceryItemText = (TextView) view.findViewById(R.id.groceryItemText);
         groceryItemText.setText(gItem.getItem() + " x " + Integer.toString(gItem.getItemQuantity()));
 

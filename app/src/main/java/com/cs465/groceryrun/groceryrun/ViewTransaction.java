@@ -129,28 +129,23 @@ public class ViewTransaction extends AppCompatActivity {
                 transactionProgress.setProgress(Transaction.PROGRESS_SHOPPING);
                 progressText.setTextColor(getResources().getColor(R.color.FlatDarkBlue));
                 shoppingBtn.setChecked(true);
-            }
-            else if (status.equals("Delivering")) {
+            } else if (status.equals("Delivering")) {
                 transactionProgress.setProgress(Transaction.PROGRESS_DELIVERING);
                 progressText.setTextColor(getResources().getColor(R.color.FlatDarkBlue));
                 deliveringBtn.setChecked(true);
-            }
-            else if (status.equals("Delivered")) {
+            } else if (status.equals("Delivered")) {
                 transactionProgress.setProgress(Transaction.PROGRESS_DELIVERED);
                 progressText.setTextColor(getResources().getColor(R.color.FlatOrange));
                 progressButtonGroup.setVisibility(View.GONE);
                 confirmBtn.setVisibility(View.VISIBLE);
-            }
-            else if (status.equals("Confirmed")) {
+            } else if (status.equals("Confirmed")) {
                 transactionProgress.setProgress(Transaction.PROGRESS_CONFIRMED);
                 progressText.setTextColor(getResources().getColor(R.color.FlatGreen));
                 progressButtonGroup.setVisibility(View.GONE);
                 rateBar.setVisibility(View.VISIBLE);
-            }
-            else
+            } else
                 transactionProgress.setProgress(0);
         }
-
 
         if(role.equals("Buyer")) {
             roleImage.setImageResource(R.mipmap.icon_buyer);

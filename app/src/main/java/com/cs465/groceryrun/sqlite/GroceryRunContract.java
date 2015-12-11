@@ -59,12 +59,14 @@ public class GroceryRunContract {
         public static final String COLUMN_NAME_ASSOCIATED_TRANSACTION_ID= "associated_transaction_id";
         public static final String COLUMN_NAME_ITEM = "item";
         public static final String COLUMN_NAME_ITEM_QUANTITY = "quantity";
+        public static final String COLUMN_NAME_ITEM_BOUGHT = "bought";
 
         public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" +
                 _ID + " INTEGER PRIMARY KEY," +
                 COLUMN_NAME_ASSOCIATED_TRANSACTION_ID   + TEXT_TYPE     + COMMA_SEP +
                 COLUMN_NAME_ITEM                        + TEXT_TYPE     + COMMA_SEP +
-                COLUMN_NAME_ITEM_QUANTITY               + INTEGER_TYPE  + ");";
+                COLUMN_NAME_ITEM_QUANTITY               + INTEGER_TYPE  + COMMA_SEP +
+                COLUMN_NAME_ITEM_BOUGHT                 + INTEGER_TYPE  +");";
 
         public static final String DELETE_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
     }

@@ -6,7 +6,7 @@
     android:id="@+id/transaction_detailview"
     android:orientation="vertical"
     android:weightSum="7"
-    android:background="@color/FlatBlue"
+    android:background="@mipmap/background2"
     tools:context="com.cs465.groceryrun.groceryrun.ViewTransaction">
 
     <RelativeLayout
@@ -28,8 +28,7 @@
             android:id="@+id/roleImage"
             android:layout_margin="5dp"
             android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:background="@mipmap/icon_buyer"/>
+            android:layout_alignParentRight="true"/>
 
     </RelativeLayout>
 
@@ -157,7 +156,10 @@
         android:layout_height="0dp"
         android:layout_weight="3"
         android:id="@+id/transactionInfoLayout"
-        android:layout_below="@+id/progressLayout">
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/progressLayout"
+        android:background="#c43cb8c1">
 
         <TextView
             android:layout_width="wrap_content"
@@ -166,6 +168,7 @@
             android:layout_marginTop="8dp"
             android:paddingLeft = "10dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/Black"
             android:text="Grocery"/>
 
         <ListView
@@ -185,6 +188,7 @@
             android:layout_marginTop="5dp"
             android:paddingLeft = "10dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/Black"
             android:text="Approximate Price: $0"/>
 
 
@@ -197,6 +201,7 @@
             android:layout_marginBottom="10dp"
             android:paddingLeft = "10dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/Black"
             android:text="Note: "/>
 
     </RelativeLayout>
@@ -206,7 +211,11 @@
         android:layout_height="0dp"
         android:layout_weight="2"
         android:id="@+id/userInfoLayout"
-        android:layout_below="@+id/transactionInfoLayout">
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/transactionInfoLayout"
+        android:background="#c43cb8c1">
 
         <TextView
             android:layout_width="wrap_content"
@@ -215,6 +224,7 @@
             android:layout_marginTop="8dp"
             android:paddingLeft = "10dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/Black"
             android:text="By: Person"/>
 
         <TextView
@@ -225,6 +235,7 @@
             android:layout_marginTop="8dp"
             android:paddingLeft = "10dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/Black"
             android:text="Gratuity: $0"/>
 
         <TextView
@@ -235,6 +246,7 @@
             android:layout_marginTop="8dp"
             android:paddingLeft = "10dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/Black"
             android:text="Shopping to:\n"/>
 
     </RelativeLayout>

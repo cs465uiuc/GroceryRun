@@ -86,9 +86,9 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
 
         ImageView childImage = (ImageView) view.findViewById(R.id.transaction_icon);
         if(child.getRole().equals("Shopper"))
-            childImage.setImageResource(R.mipmap.icon_shopper);
+            childImage.setImageResource(R.mipmap.icon_delivery);
         else
-            childImage.setImageResource(R.mipmap.icon_buyer);
+            childImage.setImageResource(R.mipmap.icon_request);
 
         TextView childText1 = (TextView) view.findViewById(R.id.transaction_title);
         childText1.setText(childTitle);
@@ -100,7 +100,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
 
         if(childStatus.equals("Delivered")) {
             childText3.setText(childStatus);
-            childText3.setTextColor(context.getResources().getColor(R.color.FlatOrange));
+            childText3.setTextColor(context.getResources().getColor(R.color.FlatWhite));
 
             TextView childText4 = (TextView) view.findViewById(R.id.transaction_duedate);
             childText4.setVisibility(View.GONE);
@@ -117,7 +117,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
             });
         } else if (childStatus.equals("Confirmed"))  {
             childText3.setText(childStatus);
-            childText3.setTextColor(context.getResources().getColor(R.color.FlatGreen));
+            childText3.setTextColor(context.getResources().getColor(R.color.Black));
 
             ImageButton childBtn = (ImageButton) view.findViewById(R.id.otransaction_confirmBtn);
             childBtn.setVisibility(View.GONE);
@@ -126,7 +126,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
             childText4.setText("Rating: " + childRating);
         } else {
             childText3.setText("Due");
-            childText3.setTextColor(context.getResources().getColor(R.color.FlatWhite));
+            childText3.setTextColor(context.getResources().getColor(R.color.Black));
 
             ImageButton childBtn = (ImageButton) view.findViewById(R.id.otransaction_confirmBtn);
             childBtn.setVisibility(View.GONE);

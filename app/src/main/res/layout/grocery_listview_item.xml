@@ -19,5 +19,6 @@
         android:gravity="center_vertical"
         android:padding="5dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/Black"
         android:text = "Item1"/>
 </LinearLayout>

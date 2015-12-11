@@ -34,7 +34,7 @@
                 android:layout_weight="2"
                 android:paddingLeft="1dp"
                 android:textSize="22sp"
-                android:textColor="@color/FlatWhite" />
+                android:textColor="@color/Black" />
 
             <TextView
                 android:id="@+id/transaction_person"
@@ -42,7 +42,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:paddingLeft="1dp"
-                android:textColor="@color/FlatWhite" />
+                android:textColor="@color/Black" />
 
         </LinearLayout>
 
@@ -62,7 +62,7 @@
                 android:layout_weight="1"
                 android:layout_alignParentLeft = "true"
                 android:paddingLeft="1dp"
-                android:textColor="@color/FlatWhite" />
+                android:textColor="@color/Black" />
 
             <TextView
                 android:id="@+id/transaction_duedate"
@@ -71,7 +71,7 @@
                 android:layout_weight="1"
                 android:layout_alignParentLeft = "true"
                 android:paddingLeft="1dp"
-                android:textColor="@color/FlatWhite" />
+                android:textColor="@color/Black" />
 
             <ImageButton
                 android:id="@+id/otransaction_confirmBtn"

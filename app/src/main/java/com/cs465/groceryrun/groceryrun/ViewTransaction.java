@@ -123,19 +123,19 @@ public class ViewTransaction extends AppCompatActivity {
 
             if (status.equals("Request Received") || status.equals("Due")) {
                 transactionProgress.setProgress(Transaction.PROGRESS_REQUEST_RECEIVED);
-                progressText.setTextColor(getResources().getColor(R.color.FlatWhite));
+                progressText.setTextColor(getResources().getColor(R.color.Black));
                 requestReceivedBtn.setChecked(true);
             } else if (status.equals("Shopping")) {
                 transactionProgress.setProgress(Transaction.PROGRESS_SHOPPING);
-                progressText.setTextColor(getResources().getColor(R.color.FlatDarkBlue));
+                progressText.setTextColor(getResources().getColor(R.color.Black));
                 shoppingBtn.setChecked(true);
             } else if (status.equals("Delivering")) {
                 transactionProgress.setProgress(Transaction.PROGRESS_DELIVERING);
-                progressText.setTextColor(getResources().getColor(R.color.FlatDarkBlue));
+                progressText.setTextColor(getResources().getColor(R.color.Black));
                 deliveringBtn.setChecked(true);
             } else if (status.equals("Delivered")) {
                 transactionProgress.setProgress(Transaction.PROGRESS_DELIVERED);
-                progressText.setTextColor(getResources().getColor(R.color.FlatOrange));
+                progressText.setTextColor(getResources().getColor(R.color.Gray));
                 progressButtonGroup.setVisibility(View.GONE);
                 confirmBtn.setVisibility(View.VISIBLE);
             } else if (status.equals("Confirmed")) {
@@ -148,11 +148,11 @@ public class ViewTransaction extends AppCompatActivity {
         }
 
         if(role.equals("Buyer")) {
-            roleImage.setImageResource(R.mipmap.icon_buyer);
+            roleImage.setImageResource(R.mipmap.icon_request);
 
             progressButtonGroup.setVisibility(View.GONE);
         } else {
-            roleImage.setImageResource(R.mipmap.icon_shopper);
+            roleImage.setImageResource(R.mipmap.icon_delivery);
 
             if(!status.equals("Delivered") && !status.equals("Confirmed")) {
                 progressButtonGroup.setVisibility(View.VISIBLE);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,104 +8,164 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.cs465.groceryrun.groceryrun.Profile"
-    android:background="#FF67C7ED">
+    android:background="@mipmap/background2"
+    android:orientation="vertical"
+    android:weightSum="10">
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/imageView"
-        android:scaleType="fitXY" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Hello"
-        android:id="@+id/firstNameTxt"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/locationTxt"
-        android:layout_toStartOf="@+id/locationTxt" />
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/imageView"
+            android:scaleType="fitXY"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="World"
-        android:id="@+id/lastNameTxt"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/descriptionTxt"
-        android:layout_toEndOf="@+id/descriptionTxt" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="5dp"
+            android:paddingRight="3dp"
+            android:layout_toRightOf="@+id/imageView"
+            android:orientation="vertical"
+            android:weightSum="8">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Phobos"
-        android:id="@+id/locationTxt"
-        android:layout_alignBottom="@+id/imageView"
-        android:layout_toLeftOf="@+id/lastNameTxt"
-        android:layout_toStartOf="@+id/lastNameTxt" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="Delivery Rating"
+                android:gravity="bottom"
+                android:id="@+id/textView27" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="this space intentionally left blank"
-        android:id="@+id/descriptionTxt"
-        android:layout_marginTop="50dp"
-        android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true" />
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:id="@+id/ratingBar"
+                android:clickable="false"
+                android:focusableInTouchMode="false"
+                android:focusable="false"
+                android:isIndicator="true"
+                android:paddingTop="18dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delivery Rating"
-        android:id="@+id/textView27"
-        android:layout_marginTop="58dp"
-        android:layout_below="@+id/descriptionTxt"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="Buyer Rating"
+                android:gravity="bottom"
+                android:id="@+id/textView28"
+                android:layout_below="@+id/ratingBar" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Buyer Rating"
-        android:id="@+id/textView28"
-        android:layout_marginTop="34dp"
-        android:layout_below="@+id/ratingBar"
-        android:layout_alignLeft="@+id/textView27"
-        android:layout_alignStart="@+id/textView27" />
 
-    <RatingBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ratingBar"
-        android:clickable="false"
-        android:focusableInTouchMode="false"
-        android:focusable="false"
-        android:isIndicator="true"
-        android:layout_alignTop="@+id/textView27"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:id="@+id/ratingBar2"
+                android:clickable="false"
+                android:focusableInTouchMode="false"
+                android:focusable="false"
+                android:isIndicator="true"
+                android:paddingTop="18dp"/>
 
-    <RatingBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ratingBar2"
-        android:clickable="false"
-        android:focusableInTouchMode="false"
-        android:focusable="false"
-        android:isIndicator="true"
-        android:layout_alignTop="@+id/textView28"
-        android:layout_alignLeft="@+id/ratingBar"
-        android:layout_alignStart="@+id/ratingBar" />
+        </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Edit Info"
-        android:id="@+id/button17"
-        android:onClick="editProfile"
-        android:layout_below="@+id/ratingBar2"
-        android:layout_alignLeft="@+id/textView28"
-        android:layout_alignStart="@+id/textView28" />
+    </RelativeLayout>
 
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:padding="10dp"
+        android:background="#c43cb8c1">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Info"
+            android:id="@+id/button17"
+            android:onClick="editProfile"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:background="@mipmap/icon_editinfo"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/Black"
+            android:text="NAME: "
+            android:id="@+id/nameLabelTxt"
+            android:layout_below="@+id/button17"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/Black"
+            android:text="Hello"
+            android:id="@+id/firstNameTxt"
+            android:layout_toRightOf="@+id/nameLabelTxt"
+            android:layout_alignBaseline="@+id/nameLabelTxt"
+            android:layout_marginLeft="2dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/Black"
+            android:text="World"
+            android:id="@+id/lastNameTxt"
+            android:layout_toRightOf="@+id/firstNameTxt"
+            android:layout_alignBaseline="@+id/nameLabelTxt"
+            android:layout_marginLeft="4dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/Black"
+            android:text="LOCATION: "
+            android:id="@+id/locationLabelTxt"
+            android:layout_below="@+id/nameLabelTxt"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/Black"
+            android:text="Phobos"
+            android:id="@+id/locationTxt"
+            android:layout_toRightOf="@+id/locationLabelTxt"
+            android:layout_alignBaseline="@+id/locationLabelTxt"
+            android:layout_marginLeft="2dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/Black"
+            android:text="ABOUT ME: "
+            android:id="@+id/aboutmeLabelTxt"
+            android:layout_below="@+id/locationLabelTxt"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="this space intentionally left blank"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/Black"
+            android:id="@+id/descriptionTxt"
+            android:layout_toRightOf="@+id/aboutmeLabelTxt"
+            android:layout_alignBaseline="@+id/aboutmeLabelTxt"
+            android:layout_marginLeft="2dp"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

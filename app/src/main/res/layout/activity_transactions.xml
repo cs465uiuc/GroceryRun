@@ -37,6 +37,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/filterButton"
+        android:padding="5dp"
         android:background="#c43cb8c1">
     </ExpandableListView>
 

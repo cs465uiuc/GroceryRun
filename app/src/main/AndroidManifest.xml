@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme.NoActionBar" >
         <activity
             android:name=".Sign_in"
-            android:label="@string/app_name">
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -51,6 +51,8 @@
         <activity android:name=".FilterAvailability" >
         </activity>
         <activity android:name=".PostRequest" >
+        </activity>
+        <activity android:name=".ViewRequest" >
         </activity>
     </application>
 

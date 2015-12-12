@@ -1,19 +1,23 @@
 package com.cs465.groceryrun.groceryrun;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
+import android.widget.ExpandableListView;
 
+import com.cs465.groceryrun.customexpandablelistview.RequestExpandableListViewAdapter;
 import com.cs465.groceryrun.enums.Request;
 
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 public class SearchRequests extends AppCompatActivity {
+
+    private ExpandableListView listView;
+    private RequestExpandableListViewAdapter adapter;
+
+    protected static String filterType, filterStatus, filterTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,17 +48,28 @@ public class SearchRequests extends AppCompatActivity {
         request.setEndTime(11);
         requests.add(request);
 
-        final ListView listView = (ListView) findViewById(R.id.request_listview);
-        SimpleRequestAdapter adapter = new SimpleRequestAdapter(this, requests);
-        listView.setAdapter(adapter);
+        listView = (ExpandableListView) findViewById(R.id.request_listview);
+
+        if(!requests.isEmpty()) {
+            adapter = new RequestExpandableListViewAdapter(this, requests);
+            listView.setAdapter(adapter);
+            for(int i=0; i<adapter.getGroupCount(); i++)
+                listView.expandGroup(i);
+
+            listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+                @Override
+                public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                    Request clickedRequest = (Request) adapter.getChild(groupPosition, childPosition);
+                    Intent intent = new Intent(SearchRequests.this, ViewRequest.class);
+                    intent.putExtra("REQUEST_PERSON", clickedRequest.getPerson());
+                    startActivity(intent);
+                    return false;
+                }
+            });
+        }
     }
 
     public void filterRequests(View v){
 
-    }
-
-    public void startTransaction(View v) {
-        Intent intent = new Intent(this,MainActivity.class);
-        startActivity(intent);
     }
 }

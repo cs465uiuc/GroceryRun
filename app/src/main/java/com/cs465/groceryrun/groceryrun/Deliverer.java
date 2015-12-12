@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 
 /**
  * Created by YourName on 11/28/2015.
@@ -28,6 +27,16 @@ public class Deliverer extends AppCompatActivity {
 
     public void searchRequests(View v){
         Intent intent = new Intent(this,SearchRequests.class);
+        startActivity(intent);
+    }
+
+    public void profilePage(View v) {
+        Intent intent = new Intent(this,Profile.class);
+        startActivity(intent);
+    }
+
+    public void homePage(View v) {
+        Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }
 }

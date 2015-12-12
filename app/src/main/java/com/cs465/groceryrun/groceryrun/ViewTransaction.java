@@ -12,14 +12,11 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.cs465.groceryrun.customexpandablelistview.GroceryListviewAdapter;
+import com.cs465.groceryrun.customexpandablelistview.TransactionGroceryListviewAdapter;
 import com.cs465.groceryrun.enums.GroceryListItem;
 import com.cs465.groceryrun.enums.Transaction;
 import com.cs465.groceryrun.sqlite.DBManager;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -45,7 +42,7 @@ public class ViewTransaction extends AppCompatActivity {
     private DBManager db;
     private int transactionID;
 
-    private GroceryListviewAdapter adapter;
+    private TransactionGroceryListviewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -191,7 +188,7 @@ public class ViewTransaction extends AppCompatActivity {
             transactionTitle.setText(title);
 
         if(groceryList != null && groceryList.size() > 0) {
-            adapter = new GroceryListviewAdapter(this, role, groceryList);
+            adapter = new TransactionGroceryListviewAdapter(this, role, groceryList);
             transactionGroceryList.setAdapter(adapter);
             transactionGroceryList.setDivider(null);
         }

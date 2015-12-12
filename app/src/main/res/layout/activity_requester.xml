@@ -14,8 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/button14"
-        android:layout_alignStart="@+id/button14"
         android:background="@mipmap/background2">
 
         <LinearLayout

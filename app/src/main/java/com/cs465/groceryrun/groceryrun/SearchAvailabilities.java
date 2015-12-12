@@ -5,14 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.cs465.groceryrun.customexpandablelistview.TransactionExpandableListViewAdapter;
 import com.cs465.groceryrun.enums.Availability;
 
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
-import java.util.logging.Filter;
 
 public class SearchAvailabilities extends Activity {
 

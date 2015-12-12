@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.ExpandableListView;
 
 import com.cs465.groceryrun.Utils.CalendarConverter;
-import com.cs465.groceryrun.customexpandablelistview.ExpandableListViewAdapter;
+import com.cs465.groceryrun.customexpandablelistview.TransactionExpandableListViewAdapter;
 import com.cs465.groceryrun.enums.GroceryListItem;
 import com.cs465.groceryrun.enums.Transaction;
 import com.cs465.groceryrun.sqlite.DBManager;
@@ -19,7 +19,7 @@ import com.cs465.groceryrun.sqlite.DBManager;
 public class Transactions extends AppCompatActivity {
 
     private ExpandableListView listView;
-    private ExpandableListViewAdapter adapter;
+    private TransactionExpandableListViewAdapter adapter;
 
     protected static String filterType, filterStatus, filterTime;
 
@@ -47,7 +47,7 @@ public class Transactions extends AppCompatActivity {
         listView = (ExpandableListView) findViewById(R.id.transaction_listview);
 
         if(!transactions.isEmpty()) {
-            adapter = new ExpandableListViewAdapter(this, transactions);
+            adapter = new TransactionExpandableListViewAdapter(this, transactions);
             listView.setAdapter(adapter);
             for(int i=0; i<adapter.getGroupCount(); i++)
                 listView.expandGroup(i);

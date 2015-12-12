@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="#c43cb8c1"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    tools:context="com.cs465.groceryrun.groceryrun.ViewRequest">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView12"
+        android:paddingLeft="10dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/Black"
+        android:text="Grocery List"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Approximate Price: $"
+        android:id="@+id/approxPriceLabel"
+        android:layout_below="@+id/userRating"
+        android:layout_alignLeft="@+id/textView12"
+        android:layout_alignStart="@+id/textView12"
+        android:layout_marginTop="125dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:id="@+id/approxPrice"
+        android:layout_alignTop="@+id/approxPriceLabel"
+        android:layout_toRightOf="@+id/approxPriceLabel"
+        android:layout_toEndOf="@+id/approxPriceLabel" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User:"
+        android:id="@+id/textView22"
+        android:layout_below="@+id/backButtonViewRequest"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp" />
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/userRating"
+        android:layout_below="@+id/textView22"
+        android:layout_alignLeft="@+id/textView22"
+        android:layout_alignStart="@+id/textView22" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gratuity: $"
+        android:id="@+id/textView61"
+        android:layout_below="@+id/approxPriceLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="17dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:id="@+id/gratuityRequestId"
+        android:layout_alignTop="@+id/textView61"
+        android:layout_toRightOf="@+id/textView61"
+        android:layout_toEndOf="@+id/textView61" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remarks:"
+        android:id="@+id/textView63"
+        android:layout_marginTop="14dp"
+        android:layout_below="@+id/textView61"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/remarksRequestId"
+        android:layout_alignTop="@+id/textView63"
+        android:layout_alignLeft="@+id/gratuityRequestId"
+        android:layout_alignStart="@+id/gratuityRequestId" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Respond HAha"
+        android:id="@+id/respondButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="76dp" />
+
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/backButtonViewRequest"
+        android:background="@mipmap/icon_back"
+        android:onClick="backToRequests"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/requestGroceryListView"
+        android:background="#ff39b8c1"
+        android:layout_below="@+id/userRating"
+        android:layout_alignRight="@+id/backButtonViewRequest"
+        android:layout_alignEnd="@+id/backButtonViewRequest"
+        android:layout_above="@+id/approxPrice" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=":)"
+        android:id="@+id/userNameRequest"
+        android:layout_above="@+id/userRating"
+        android:layout_toRightOf="@+id/remarksRequestId"
+        android:layout_toEndOf="@+id/remarksRequestId" />
+</RelativeLayout>

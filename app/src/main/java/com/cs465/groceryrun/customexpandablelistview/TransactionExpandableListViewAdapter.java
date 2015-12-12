@@ -22,13 +22,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
+public class TransactionExpandableListViewAdapter extends BaseExpandableListAdapter {
 
     private Context context;
     private ArrayList<String> headerList; //For dates
     private HashMap<String, ArrayList<Transaction>> itemList;
 
-    public ExpandableListViewAdapter(Context context, ArrayList<Transaction> items) {
+    public TransactionExpandableListViewAdapter(Context context, ArrayList<Transaction> items) {
         this.context = context;
         this.headerList = new ArrayList<String>();
         this.itemList = new HashMap<String, ArrayList<Transaction>>();
@@ -81,7 +81,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
 
         if (view == null) {
             LayoutInflater infalInflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = infalInflater.inflate(R.layout.expandable_listview_item, null);
+            view = infalInflater.inflate(R.layout.expandable_listview_transaction, null);
         }
 
         ImageView childImage = (ImageView) view.findViewById(R.id.transaction_icon);
@@ -168,7 +168,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         if (view == null) {
             LayoutInflater infalInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = infalInflater.inflate(R.layout.expandable_listview_group, null);
+            view = infalInflater.inflate(R.layout.expandable_listview_group_transaction, null);
         }
 
         TextView lblListHeader = (TextView) view.findViewById(R.id.transaction_date_textview);

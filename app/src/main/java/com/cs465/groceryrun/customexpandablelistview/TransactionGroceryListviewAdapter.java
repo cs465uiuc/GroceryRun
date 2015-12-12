@@ -18,13 +18,13 @@ import java.util.ArrayList;
 /**
  * Created by tdw6193 on 12/2/2015.
  */
-public class GroceryListviewAdapter extends BaseAdapter {
+public class TransactionGroceryListviewAdapter extends BaseAdapter {
 
     private Context context;
     private String role;
     private ArrayList<GroceryListItem> groceryItems;
 
-    public GroceryListviewAdapter(Context context, String role, ArrayList<GroceryListItem> groceryItems) {
+    public TransactionGroceryListviewAdapter(Context context, String role, ArrayList<GroceryListItem> groceryItems) {
         this.context = context;
         this.role = role;
         this.groceryItems = groceryItems;

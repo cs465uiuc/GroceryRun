@@ -87,6 +87,11 @@ public class Profile extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void homePage(View v) {
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+    }
+
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         ImageView bmImage;
 

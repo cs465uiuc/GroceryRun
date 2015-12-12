@@ -18,7 +18,7 @@
         android:layout_alignParentLeft="true"
         android:layout_margin="8dp"
         android:background="@mipmap/icon_back"
-        android:onClick="goBack"/>
+        android:onClick="backToDeliverer"/>
 
     <ImageButton
         android:layout_width="30dp"

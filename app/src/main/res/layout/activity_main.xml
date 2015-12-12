@@ -22,14 +22,6 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingTop="150dp">
-
-            </LinearLayout>
-
-            <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -57,14 +49,16 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"></LinearLayout>
+                android:layout_gravity="right">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Grocery shopping made simple. "
-                android:id="@+id/textView13"
-                android:textColor="#ffffff" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Grocery shopping made simple. "
+                    android:paddingLeft="10px"
+                    android:id="@+id/textView13"
+                    android:textColor="#ffffff" />
+            </LinearLayout>
 
         </LinearLayout>
 

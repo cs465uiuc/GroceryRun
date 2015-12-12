@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/approximatePrice"
+        android:id="@+id/approxPriceEditMyPosting"
         android:layout_alignBaseline="@+id/approximatePriceLabel"
         android:layout_alignBottom="@+id/approximatePriceLabel"
         android:layout_toRightOf="@+id/approximatePriceLabel"

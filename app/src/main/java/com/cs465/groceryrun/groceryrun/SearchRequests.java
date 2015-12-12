@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 public class SearchRequests extends AppCompatActivity {
-
     private ExpandableListView listView;
     private RequestExpandableListViewAdapter adapter;
 
@@ -67,6 +66,11 @@ public class SearchRequests extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    public void backToDeliverer(View v){
+        Intent intent = new Intent(this, Deliverer.class);
+        startActivity(intent);
     }
 
     public void filterRequests(View v){

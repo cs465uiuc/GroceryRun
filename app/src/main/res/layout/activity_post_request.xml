@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/approximatePrice"
+        android:id="@+id/approxPriceEditMyPosting"
         android:layout_alignBaseline="@+id/approximatePriceLabel"
         android:layout_alignBottom="@+id/approximatePriceLabel"
         android:layout_toRightOf="@+id/approximatePriceLabel"
@@ -114,7 +114,7 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="2"
-        android:id="@+id/startTime"
+        android:id="@+id/startTimeMyPosting"
         android:layout_alignBaseline="@+id/timeLabel"
         android:layout_alignBottom="@+id/timeLabel"
         android:layout_toRightOf="@+id/timeLabel"
@@ -126,24 +126,24 @@
         android:text="-"
         android:id="@+id/textView52"
         android:layout_alignBottom="@+id/timeLabel"
-        android:layout_toRightOf="@+id/startTime"
-        android:layout_toEndOf="@+id/startTime" />
+        android:layout_toRightOf="@+id/startTimeMyPosting"
+        android:layout_toEndOf="@+id/startTimeMyPosting" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="2"
-        android:id="@+id/endTime"
-        android:layout_alignBottom="@+id/startTime"
-        android:layout_toLeftOf="@+id/approximatePrice"
-        android:layout_toStartOf="@+id/approximatePrice" />
+        android:id="@+id/endTimeMyPosting"
+        android:layout_alignBottom="@+id/startTimeMyPosting"
+        android:layout_toLeftOf="@+id/approxPriceEditMyPosting"
+        android:layout_toStartOf="@+id/approxPriceEditMyPosting" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Post"
-        android:id="@+id/postButton"
+        android:id="@+id/saveAvailabilityButton"
         android:onClick="postRequest"
         android:layout_marginTop="12dp"
         android:layout_below="@+id/editText18"
@@ -156,7 +156,7 @@
         android:text="Date:"
         android:id="@+id/textView51"
         android:layout_marginTop="21dp"
-        android:layout_below="@+id/startTime"
+        android:layout_below="@+id/startTimeMyPosting"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -187,15 +187,15 @@
         android:ems="2"
         android:id="@+id/editText19"
         android:layout_alignTop="@+id/editText18"
-        android:layout_alignLeft="@+id/endTime"
-        android:layout_alignStart="@+id/endTime" />
+        android:layout_alignLeft="@+id/endTimeMyPosting"
+        android:layout_alignStart="@+id/endTimeMyPosting" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="/"
         android:id="@+id/textView54"
-        android:layout_above="@+id/postButton"
+        android:layout_above="@+id/saveAvailabilityButton"
         android:layout_toRightOf="@+id/editText19"
         android:layout_toEndOf="@+id/editText19" />
 

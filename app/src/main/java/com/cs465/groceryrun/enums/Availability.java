@@ -11,6 +11,7 @@ public class Availability {
     double price;
     int startTime;
     int endTime;
+    String location;
 
     public String getPerson() {
         return person;
@@ -50,5 +51,13 @@ public class Availability {
 
     public void setEndTime(int endTime) {
         this.endTime = endTime;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

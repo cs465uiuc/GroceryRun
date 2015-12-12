@@ -5,16 +5,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class Confirm_Email extends AppCompatActivity {
+public class SignUp extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_confirm__email);
+        setContentView(R.layout.activity_sign_up);
     }
 
-    public void home(View v){
-        Intent intent = new Intent(this,Sign_in.class);
+
+    public void confirm(View v){
+        Intent intent = new Intent(this,ConfirmEmail.class);
         startActivity(intent);
     }
+
+
 }

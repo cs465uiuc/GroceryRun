@@ -22,7 +22,7 @@ public class CreateRequest extends Activity {
         }
 
         TextView userNameText = (TextView) findViewById(R.id.userName);
-        EditText priceEdit = (EditText) findViewById(R.id.approximatePrice);
+        EditText priceEdit = (EditText) findViewById(R.id.approxPriceEditMyPosting);
 
         if(person != null) {
             userNameText.setText(person);

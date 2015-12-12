@@ -47,7 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="User:"
-        android:id="@+id/textView22"
+        android:id="@+id/userNameRequest"
         android:layout_below="@+id/backButtonViewRequest"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -58,9 +58,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/userRating"
-        android:layout_below="@+id/textView22"
-        android:layout_alignLeft="@+id/textView22"
-        android:layout_alignStart="@+id/textView22" />
+        android:layout_below="@+id/userNameRequest"
+        android:layout_alignLeft="@+id/userNameRequest"
+        android:layout_alignStart="@+id/userNameRequest" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -102,12 +102,11 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Respond HAha"
+        android:text="Respond"
         android:id="@+id/respondButton"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="76dp" />
+        android:layout_alignParentStart="true" />
 
     <ImageButton
         android:layout_width="30dp"
@@ -132,9 +131,110 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=":)"
-        android:id="@+id/userNameRequest"
-        android:layout_above="@+id/userRating"
-        android:layout_toRightOf="@+id/remarksRequestId"
-        android:layout_toEndOf="@+id/remarksRequestId" />
+        android:text="Date:"
+        android:id="@+id/textView20"
+        android:layout_marginTop="17dp"
+        android:layout_below="@+id/textView63"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00"
+        android:id="@+id/monthDateRequest"
+        android:layout_alignTop="@+id/textView20"
+        android:layout_toRightOf="@+id/textView20"
+        android:layout_toEndOf="@+id/textView20" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="/"
+        android:id="@+id/textView62"
+        android:layout_alignTop="@+id/monthDateRequest"
+        android:layout_toRightOf="@+id/monthDateRequest"
+        android:layout_toEndOf="@+id/monthDateRequest" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00"
+        android:id="@+id/dayDateRequest"
+        android:layout_alignTop="@+id/textView62"
+        android:layout_toRightOf="@+id/textView62"
+        android:layout_toEndOf="@+id/textView62" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="/"
+        android:id="@+id/textView21"
+        android:layout_alignTop="@+id/dayDateRequest"
+        android:layout_toRightOf="@+id/dayDateRequest"
+        android:layout_toEndOf="@+id/dayDateRequest" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0000"
+        android:id="@+id/yearDateRequest"
+        android:layout_alignTop="@+id/textView21"
+        android:layout_toRightOf="@+id/textView21"
+        android:layout_toEndOf="@+id/textView21" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time:"
+        android:id="@+id/textView64"
+        android:layout_marginTop="19dp"
+        android:layout_below="@+id/textView20"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00"
+        android:id="@+id/startTimeRequest"
+        android:layout_alignTop="@+id/textView64"
+        android:layout_toRightOf="@+id/textView64"
+        android:layout_toEndOf="@+id/textView64" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:id="@+id/textView66"
+        android:layout_alignTop="@+id/startTimeRequest"
+        android:layout_toRightOf="@+id/textView63"
+        android:layout_toEndOf="@+id/textView63" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00"
+        android:id="@+id/endTimeRequest"
+        android:layout_alignTop="@+id/textView66"
+        android:layout_toRightOf="@+id/gratuityRequestId"
+        android:layout_toEndOf="@+id/gratuityRequestId" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Location:"
+        android:id="@+id/textView68"
+        android:layout_marginTop="18dp"
+        android:layout_below="@+id/textView64"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/locationRequest"
+        android:layout_alignTop="@+id/textView68"
+        android:layout_alignLeft="@+id/textView66"
+        android:layout_alignStart="@+id/textView66" />
 </RelativeLayout>

@@ -87,9 +87,9 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Post"
+        android:text="Save"
         android:id="@+id/saveAvailabilityButton"
-        android:onClick="postAvailability"
+        android:onClick="saveMyPosting"
         android:layout_below="@+id/locationEditMyPosting"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -129,7 +129,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Availability"
+        android:text="Edit Posting"
         android:id="@+id/textView65"
         android:textSize="22dp"
         android:layout_alignParentTop="true"
@@ -152,20 +152,20 @@
         android:id="@+id/changeDateEditMyPosting"
         android:minWidth="0px"
         android:minHeight="0px"
-        android:onClick="changeDate"
+        android:onClick="editDate"
         android:layout_alignBaseline="@+id/editDateMyPosting"
         android:layout_alignBottom="@+id/editDateMyPosting"
         android:layout_alignRight="@+id/approxPriceEditMyPosting"
         android:layout_alignEnd="@+id/approxPriceEditMyPosting" />
 
-    <ImageButton
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:id="@+id/imageButton4"
-        android:background="@mipmap/icon_back"
-        android:onClick="backToDeliverer"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/changeDateEditMyPosting"
-        android:layout_alignEnd="@+id/changeDateEditMyPosting" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:id="@+id/cancelAvailabilityButton"
+        android:onClick="cancelMyPosting"
+        android:layout_alignBottom="@+id/saveAvailabilityButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

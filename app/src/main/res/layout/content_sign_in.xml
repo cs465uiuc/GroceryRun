@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.cs465.groceryrun.groceryrun.Sign_in"
+    tools:context="com.cs465.groceryrun.groceryrun.SignIn"
     tools:showIn="@layout/activity_sign_in"
     android:background="@mipmap/background2">
 
@@ -24,12 +24,25 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentEnd="false">
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentRight="false">
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="100dp"></LinearLayout>
+            android:layout_height="100dp"
+            android:paddingTop="50dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="GroceryRun"
+                android:id="@+id/textView"
+                android:textSize="35sp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal" />
+        </LinearLayout>
 
         <LinearLayout
             android:orientation="vertical"
@@ -44,8 +57,7 @@
                 android:text="Log In "
                 android:id="@+id/textView3"
                 android:gravity="center_horizontal"
-                android:textSize="30sp"
-                android:textStyle="bold" />
+                android:textSize="30sp" />
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -104,8 +116,9 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingLeft="30dp">
+                android:layout_height="66dp"
+                android:paddingLeft="15dp"
+                android:gravity="left">
 
                 <Button
                     android:layout_width="wrap_content"
@@ -121,7 +134,8 @@
                     android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:paddingLeft="15dp"></LinearLayout>
+                    android:paddingLeft="15dp"
+                    android:gravity="center"></LinearLayout>
 
                 <Button
                     android:layout_width="wrap_content"
@@ -136,7 +150,8 @@
                     android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:paddingLeft="15dp"></LinearLayout>
+                    android:paddingLeft="15dp"
+                    android:gravity="right"></LinearLayout>
 
                 <Button
                     android:layout_width="wrap_content"
@@ -159,13 +174,6 @@
             android:layout_weight="1"
             android:paddingBottom="30dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="GroceryRun"
-                android:id="@+id/textView"
-                android:textSize="30sp" />
         </LinearLayout>
 
     </LinearLayout>

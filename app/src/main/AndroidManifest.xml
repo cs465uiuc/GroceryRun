@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar" >
         <activity
-            android:name=".Sign_in"
+            android:name=".SignIn"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,8 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Sign_up" />
-        <activity android:name=".Confirm_Email" />
+        <activity android:name=".SignUp" />
+        <activity android:name=".ConfirmEmail" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Settings" />
         <activity android:name=".ContactUs" />
@@ -53,6 +53,10 @@
         <activity android:name=".PostRequest" >
         </activity>
         <activity android:name=".ViewRequest" >
+        </activity>
+        <activity android:name=".ViewMyPosting" >
+        </activity>
+        <activity android:name=".EditMyPosting" >
         </activity>
     </application>
 

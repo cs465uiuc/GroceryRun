@@ -125,7 +125,7 @@
                     android:layout_height="wrap_content"
                     android:text="Sign in"
                     android:id="@+id/button"
-                    android:background="#c43cb8c1"
+                    android:background="#c4177076"
                     android:textColor="#ffffff"
                     android:onClick="login"
                     android:nestedScrollingEnabled="false" />
@@ -142,7 +142,7 @@
                     android:layout_height="wrap_content"
                     android:text="Sign up"
                     android:id="@+id/button2"
-                    android:background="#c43cb8c1"
+                    android:background="#c4177076"
                     android:textColor="#ffffff"
                     android:onClick="signup" />
 
@@ -158,7 +158,7 @@
                     android:layout_height="wrap_content"
                     android:text="About us"
                     android:id="@+id/button3"
-                    android:background="#c43cb8c1"
+                    android:background="#c4177076"
                     android:textColor="#ffffff"
                     android:onClick="info" />
 

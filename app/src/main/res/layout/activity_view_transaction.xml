@@ -175,6 +175,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/transactionGroceryList"
+            android:background="#ff39b8c1"
             android:layout_below="@+id/transactionTitle"
             android:layout_above="@+id/transactionGroceryPrice">
 

@@ -87,6 +87,7 @@
         android:id="@+id/button8"
         android:onClick="editPosting"
         android:layout_marginTop="58dp"
+        android:background="#6ae168"
         android:layout_below="@+id/locationMyPosting"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -97,6 +98,7 @@
         android:text="Delete"
         android:id="@+id/button9"
         android:onClick="deletePosting"
+        android:background="#e16868"
         android:layout_alignBottom="@+id/button8"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />

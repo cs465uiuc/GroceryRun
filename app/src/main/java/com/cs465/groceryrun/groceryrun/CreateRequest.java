@@ -41,6 +41,7 @@ public class CreateRequest extends Activity {
 
     public void submitRequest(View v){
         Intent intent = new Intent(this,AvailabilityInfo.class);
+        intent.putExtra("AVAILABILITY_PERSON", person);
         startActivity(intent);
     }
 }

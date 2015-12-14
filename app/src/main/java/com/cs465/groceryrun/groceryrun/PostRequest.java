@@ -18,4 +18,9 @@ public class PostRequest extends Activity {
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }
+
+    public void back(View v){
+        Intent intent = new Intent(this,Requester.class);
+        startActivity(intent);
+    }
 }

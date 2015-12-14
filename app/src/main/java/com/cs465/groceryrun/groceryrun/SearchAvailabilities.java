@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.cs465.groceryrun.customexpandablelistview.AvailabilityExpandableListViewAdapter2;
 import com.cs465.groceryrun.customexpandablelistview.TransactionExpandableListViewAdapter;
 import com.cs465.groceryrun.enums.Availability;
 
@@ -16,6 +18,8 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 public class SearchAvailabilities extends Activity {
+    private ExpandableListView listView;
+    private AvailabilityExpandableListViewAdapter2 adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,7 @@ public class SearchAvailabilities extends Activity {
         availability.setPrice(100000);
         availability.setStartTime(5);
         availability.setEndTime(7);
+        availability.setLocation("25,000 CH");
         availabilities.add(availability);
 
         availability = new Availability();
@@ -42,34 +47,38 @@ public class SearchAvailabilities extends Activity {
         availability.setPrice(0);
         availability.setStartTime(10);
         availability.setEndTime(11);
+        availability.setLocation("there");
         availabilities.add(availability);
 
-        final ListView listView = (ListView) findViewById(R.id.availability_listview);
-        SimpleAvailabilityAdapter adapter = new SimpleAvailabilityAdapter(this, availabilities);
-        listView.setAdapter(adapter);
+        listView = (ExpandableListView) findViewById(R.id.availability_listview);
 
-        listView.setOnItemClickListener(new ListView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> a, View v, int p, long id) {
-                Intent intent = new Intent(SearchAvailabilities.this, AvailabilityInfo.class);
-                TextView personTxt = (TextView) v.findViewById(R.id.list_entry_person_and_price);
-                String personAndPrice = personTxt.getText().toString();
-                TextView dateTxt = (TextView) v.findViewById(R.id.list_entry_date);
-                String date = dateTxt.getText().toString();
-                int colonPos = personAndPrice.indexOf(':');
-                String person = personAndPrice.substring(0, colonPos);
-                String price = personAndPrice.substring(colonPos + 3);
+        if(!availabilities.isEmpty()) {
+            adapter = new AvailabilityExpandableListViewAdapter2(this, availabilities);
+            listView.setAdapter(adapter);
+            for(int i=0; i<adapter.getGroupCount(); i++)
+                listView.expandGroup(i);
 
-                intent.putExtra("AVAILABILITY_PERSON", person);
-                intent.putExtra("AVAILABILITY_PRICE", price);
-                intent.putExtra("AVAILABILITY_DATE", date);
-                startActivity(intent);
-            }
-        });
+            listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+                @Override
+                public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                    Availability clickedAvailability = (Availability) adapter.getChild(groupPosition, childPosition);
+                    Intent intent = new Intent(SearchAvailabilities.this, AvailabilityInfo.class);
+                    intent.putExtra("AVAILABILITY_PRICE", Double.toString(clickedAvailability.getPrice()));
+                    intent.putExtra("AVAILABILITY_PERSON", clickedAvailability.getPerson());
+                    startActivity(intent);
+                    return false;
+                }
+            });
+        }
     }
 
     public void filterAvailabilities(View v){
         Intent intent = new Intent(this,FilterAvailability.class);
+        startActivity(intent);
+    }
+
+    public void back(View v){
+        Intent intent = new Intent(this,Requester.class);
         startActivity(intent);
     }
 }

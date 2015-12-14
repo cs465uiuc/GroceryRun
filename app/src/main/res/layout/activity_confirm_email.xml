@@ -30,13 +30,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="50dp"
-            android:onClick="home">
+            >
 
             <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/imageButton3"
                 android:src="@mipmap/icon_back"
+                android:onClick="home"
                 android:background="#00000000" />
         </LinearLayout>
     </LinearLayout>

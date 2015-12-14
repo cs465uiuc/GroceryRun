@@ -61,7 +61,12 @@ public class Settings extends AppCompatActivity {
         alert.show();
     }
 
-    public void back(View v){
+    public void apply(View v){
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void cancel(View v){
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }

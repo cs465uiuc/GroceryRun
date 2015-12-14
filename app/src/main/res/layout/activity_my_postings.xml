@@ -27,8 +27,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_margin="8dp"
-        android:background="@mipmap/icon_filter"
-        android:onClick="filterTrans"/>
+        android:background="@mipmap/icon_filter"/>
 
     <ExpandableListView
         android:id="@+id/availability_listview"
